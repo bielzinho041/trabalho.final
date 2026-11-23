@@ -1,33 +1,47 @@
 /* =============================================================================
    PORTFÓLIO DE REDAÇÕES — GABRIEL TEIXEIRA DA SILVA
-   Estrutura: barra lateral + índice/leitor.
+   JavaScript puro, organizado por módulos:
 
    00. Configuração e utilitários
-   01. Barra lateral (menu e seção atual)
-   02. Trajetória: revelação ao rolar
-   03. Redações: busca, filtro e leitor
+   01. Cabeçalho (menu responsivo + seção atual)
+   02. Revelação ao rolar
+   03. Redações: busca, filtro por tema e leitor sanfonado
+   04. Voltar ao topo
    ============================================================================= */
 
 'use strict';
 
 /* =============================================================================
    00. CONFIGURAÇÃO E UTILITÁRIOS
+   -----------------------------------------------------------------------------
+   Edite apenas este objeto para atualizar os dados do site inteiro.
    ============================================================================= */
 const CONFIG = {
   nome: 'Gabriel Teixeira da Silva',
   iniciais: 'GT',
   anoConclusao: '2026',
+  email: 'seu.email@exemplo.com',
+  github: 'https://github.com/seu-usuario',
 };
 
 const $ = (seletor, onde = document) => onde.querySelector(seletor);
 const $$ = (seletor, onde = document) => Array.from(onde.querySelectorAll(seletor));
 
-const semAcento = (texto) =>
+/** Minúsculas e sem acentos — usado na busca. */
+const normalizar = (texto) =>
   texto
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .trim();
+
+function debounce(fn, espera = 140) {
+  let timer = null;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), espera);
+  };
+}
 
 function aplicarConfig() {
   $$('[data-config]').forEach((el) => {
@@ -35,43 +49,56 @@ function aplicarConfig() {
     if (valor) el.textContent = valor;
   });
 
-  document.title = `${CONFIG.nome} — Portfólio de Redações | Ensino Médio`;
+  if (CONFIG.nome) {
+    document.title = `${CONFIG.nome} — Portfólio de Redações | Ensino Médio`;
+  }
+
+  const email = $('a[href^="mailto:"]');
+  if (email) email.href = `mailto:${CONFIG.email}`;
+
+  const github = $('a[href*="github.com"]');
+  if (github) github.href = CONFIG.github;
 }
 
 /* =============================================================================
-   01. BARRA LATERAL
+   01. CABEÇALHO
    ============================================================================= */
-function iniciarLateral() {
-  const lateral = $('.lateral');
-  const botao = $('#lateral-menu');
-  const nav = $('#nav-lateral');
-  if (!lateral || !botao || !nav) return;
+function iniciarCabecalho() {
+  const botao = $('#menu-botao');
+  const menu = $('#menu');
+  if (!botao || !menu) return;
 
   const fechar = () => {
-    nav.classList.remove('is-aberto');
+    menu.classList.remove('is-aberto');
     botao.setAttribute('aria-expanded', 'false');
   };
 
   botao.addEventListener('click', () => {
-    const aberto = nav.classList.toggle('is-aberto');
+    const aberto = menu.classList.toggle('is-aberto');
     botao.setAttribute('aria-expanded', String(aberto));
   });
 
-  $$('a', nav).forEach((link) => link.addEventListener('click', fechar));
+  $$('a', menu).forEach((link) => link.addEventListener('click', fechar));
 
   document.addEventListener('keydown', (evento) => {
-    if (evento.key === 'Escape' && nav.classList.contains('is-aberto')) {
+    if (evento.key === 'Escape' && menu.classList.contains('is-aberto')) {
       fechar();
       botao.focus();
     }
   });
 
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 980) fechar();
+  document.addEventListener('click', (evento) => {
+    if (!menu.classList.contains('is-aberto')) return;
+    if (menu.contains(evento.target) || botao.contains(evento.target)) return;
+    fechar();
   });
 
-  /* seção atual */
-  const links = $$('a[href^="#"]', nav);
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) fechar();
+  });
+
+  /* marcar no menu a seção visível */
+  const links = $$('.menu-lista a[href^="#"]');
   const alvos = links
     .map((link) => ({ link, secao: document.getElementById(link.getAttribute('href').slice(1)) }))
     .filter((item) => item.secao);
@@ -87,7 +114,7 @@ function iniciarLateral() {
         if (atual) atual.link.setAttribute('aria-current', 'true');
       });
     },
-    { rootMargin: '-40% 0px -50% 0px', threshold: 0 },
+    { rootMargin: '-45% 0px -50% 0px', threshold: 0 },
   );
 
   alvos.forEach(({ secao }) => observador.observe(secao));
@@ -120,144 +147,109 @@ function iniciarRevelacoes() {
 }
 
 /* =============================================================================
-   03. REDAÇÕES: BUSCA, FILTRO E LEITOR
+   03. REDAÇÕES: BUSCA, FILTRO E SANFONA
    ============================================================================= */
 function iniciarRedacoes() {
-  const leitura = $('#leitura');
-  const indice = $('#indice');
-  const leitor = $('#leitor');
-  const vazioLeitor = $('#leitor-vazio');
-  const nav = $('#leitor-nav');
-  const contadorLeitor = $('#ler-contador');
-  const contador = $('#contador');
-  const vazio = $('#vazio');
+  const lista = $('#lista');
+  if (!lista) return;
+
+  const itens = $$('.indice-item', lista);
   const campo = $('#busca');
   const limpar = $('#limpar-busca');
-  const limparTudo = $('#limpar-tudo');
+  const contador = $('#contador');
+  const vazio = $('#vazio');
   const temas = $$('.tema');
-  if (!leitura || !indice || !leitor) return;
+  const total = itens.length;
+  const estado = { termo: '', tema: 'todas' };
 
-  const botoes = $$('.indice-botao', indice);
-  const redacoes = $$('.redacao', leitor);
-  const total = botoes.length;
-  const estado = { termo: '', tema: 'todas', atual: null };
-
-  /* texto de busca por redação (título + tema + texto) */
-  botoes.forEach((botao) => {
-    const item = botao.closest('.indice-item');
-    const texto = $(`#r-${botao.dataset.num} .redacao-texto`);
-    item.dataset.busca = semAcento(
-      [botao.textContent, texto ? texto.textContent : ''].join(' '),
+  /* texto de busca: título + tema + metadados + texto completo */
+  itens.forEach((item) => {
+    const texto = $('.texto-redacao', item);
+    item.dataset.busca = normalizar(
+      [
+        $('.indice-titulo', item)?.textContent ?? '',
+        $('.indice-meta', item)?.textContent ?? '',
+        texto ? texto.textContent : '',
+      ].join(' '),
     );
   });
 
-  /* --- mostrar uma redação no painel --- */
-  const visiveis = () =>
-    botoes.filter((b) => !b.closest('.indice-item').hidden).map((b) => b.dataset.num);
-
-  const mostrar = (num, focar = true) => {
-    estado.atual = num;
-
-    redacoes.forEach((artigo) => {
-      artigo.hidden = artigo.dataset.num !== num;
+  /* --- sanfona: um item aberto por vez --- */
+  const abrir = (item) => {
+    itens.forEach((outro) => {
+      if (outro === item) return;
+      outro.classList.remove('is-aberto');
+      $('.indice-cabeca', outro)?.setAttribute('aria-expanded', 'false');
+      const corpo = $('.indice-corpo', outro);
+      if (corpo) corpo.setAttribute('aria-hidden', 'true');
     });
 
-    botoes.forEach((botao) => {
-      const ativo = botao.dataset.num === num;
-      botao.classList.toggle('is-ativo', ativo);
-      if (ativo) botao.setAttribute('aria-current', 'true');
-      else botao.removeAttribute('aria-current');
-    });
+    item.classList.add('is-aberto');
+    $('.indice-cabeca', item)?.setAttribute('aria-expanded', 'true');
+    $('.indice-corpo', item)?.setAttribute('aria-hidden', 'false');
+  };
 
-    leitura.classList.add('tem-selecao');
-    if (vazioLeitor) vazioLeitor.hidden = true;
-    if (nav) nav.hidden = false;
+  const fechar = (item) => {
+    item.classList.remove('is-aberto');
+    $('.indice-cabeca', item)?.setAttribute('aria-expanded', 'false');
+    $('.indice-corpo', item)?.setAttribute('aria-hidden', 'true');
+  };
 
-    const lista = visiveis();
-    const posicao = lista.indexOf(num);
-    if (contadorLeitor) contadorLeitor.textContent = `${posicao + 1} / ${lista.length}`;
+  itens.forEach((item) => {
+    const cabeca = $('.indice-cabeca', item);
+    if (!cabeca) return;
 
-    const anterior = $('[data-passo="-1"]', nav);
-    const proximo = $('[data-passo="1"]', nav);
-    if (anterior) anterior.disabled = posicao <= 0;
-    if (proximo) proximo.disabled = posicao === -1 || posicao >= lista.length - 1;
-
-    if (focar) {
-      const titulo = $(`#r-${num} .redacao-titulo`);
-      const alvo = leitura.classList.contains('tem-selecao') && window.innerWidth <= 860;
-      if (alvo) {
-        leitura.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        if (titulo) window.setTimeout(() => titulo.setAttribute('tabindex', '-1'), 300);
+    cabeca.addEventListener('click', () => {
+      if (item.classList.contains('is-aberto')) {
+        fechar(item);
+      } else {
+        abrir(item);
       }
+    });
+
+    const botaoFechar = $('.indice-fechar', item);
+    if (botaoFechar) {
+      botaoFechar.addEventListener('click', () => {
+        fechar(item);
+        cabeca.focus({ preventScroll: true });
+      });
     }
-  };
-
-  const fecharLeitura = () => {
-    leitura.classList.remove('tem-selecao');
-    redacoes.forEach((artigo) => (artigo.hidden = true));
-    botoes.forEach((botao) => botao.classList.remove('is-ativo'));
-    if (nav) nav.hidden = true;
-    if (vazioLeitor) vazioLeitor.hidden = false;
-    estado.atual = null;
-  };
-
-  botoes.forEach((botao) => {
-    botao.addEventListener('click', () => mostrar(botao.dataset.num));
   });
 
-  $$('.redacao-voltar', leitor).forEach((botao) => {
-    botao.addEventListener('click', () => {
-      const num = estado.atual;
-      fecharLeitura();
-      const alvo = botoes.find((b) => b.dataset.num === num);
-      if (alvo) alvo.focus({ preventScroll: true });
-      const lado = $('.indice-lado');
-      if (lado) lado.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-
-  /* --- anterior / próxima --- */
-  $$('.ler-nav', nav).forEach((botao) => {
-    botao.addEventListener('click', () => {
-      const lista = visiveis();
-      const posicao = lista.indexOf(estado.atual);
-      const proximo = lista[posicao + Number(botao.dataset.passo)];
-      if (proximo) mostrar(proximo, false);
-    });
-  });
-
-  /* --- busca e filtro --- */
+  /* --- busca + filtro --- */
   const aplicar = () => {
-    const termo = semAcento(estado.termo);
-    let achou = 0;
+    const termo = normalizar(estado.termo);
+    let visiveis = 0;
 
-    botoes.forEach((botao) => {
-      const item = botao.closest('.indice-item');
+    itens.forEach((item) => {
       const combinaTema = estado.tema === 'todas' || item.dataset.cat === estado.tema;
       const combinaTermo = !termo || item.dataset.busca.includes(termo);
-      const mostrarEste = combinaTema && combinaTermo;
-      item.hidden = !mostrarEste;
-      if (mostrarEste) achou += 1;
+      const mostrar = combinaTema && combinaTermo;
+      item.hidden = !mostrar;
+      if (mostrar) visiveis += 1;
+      if (!mostrar) fechar(item);
     });
 
     if (contador) {
-      contador.textContent = achou === total ? `${total} redações` : `${achou} de ${total} redações`;
+      contador.textContent =
+        visiveis === total ? `${total} redações` : `${visiveis} de ${total} redações`;
     }
-    if (vazio) vazio.hidden = achou !== 0;
+    if (vazio) vazio.hidden = visiveis !== 0;
     if (limpar) limpar.hidden = !estado.termo;
 
     temas.forEach((botao) => {
       botao.setAttribute('aria-pressed', String(botao.dataset.tema === estado.tema));
     });
-
-    if (achou === 0) fecharLeitura();
   };
 
   if (campo) {
-    campo.addEventListener('input', () => {
-      estado.termo = campo.value;
-      aplicar();
-    });
+    campo.addEventListener(
+      'input',
+      debounce(() => {
+        estado.termo = campo.value;
+        aplicar();
+      }),
+    );
   }
 
   if (limpar) {
@@ -276,6 +268,8 @@ function iniciarRedacoes() {
     });
   });
 
+  /* botão "limpar busca e filtros" do estado vazio */
+  const limparTudo = $('#limpar-tudo');
   if (limparTudo) {
     limparTudo.addEventListener('click', () => {
       estado.termo = '';
@@ -286,7 +280,7 @@ function iniciarRedacoes() {
     });
   }
 
-  /* atalho "/" foca a busca */
+  /* atalho: tecla "/" foca a busca */
   document.addEventListener('keydown', (evento) => {
     if (evento.key !== '/' || !campo) return;
     const digitando = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
@@ -296,7 +290,32 @@ function iniciarRedacoes() {
   });
 
   aplicar();
-  fecharLeitura();
+}
+
+/* =============================================================================
+   04. VOLTAR AO TOPO
+   ============================================================================= */
+function iniciarBotaoTopo() {
+  const botao = $('.topo');
+  if (!botao) return;
+
+  const atualizar = () => {
+    const visivel = window.scrollY > 600;
+    if (visivel && botao.hidden) botao.hidden = false;
+    botao.classList.toggle('is-visivel', visivel);
+    if (!visivel) {
+      setTimeout(() => {
+        if (window.scrollY <= 600) botao.hidden = true;
+      }, 320);
+    }
+  };
+
+  atualizar();
+  window.addEventListener('scroll', atualizar, { passive: true });
+
+  botao.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }
 
 /* =============================================================================
@@ -304,7 +323,8 @@ function iniciarRedacoes() {
    ============================================================================= */
 document.addEventListener('DOMContentLoaded', () => {
   aplicarConfig();
-  iniciarLateral();
+  iniciarCabecalho();
   iniciarRevelacoes();
   iniciarRedacoes();
+  iniciarBotaoTopo();
 });
