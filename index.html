@@ -1,178 +1,888 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriel Teixeira da Silva — Portfólio de Redações | Ensino Médio</title>
+  <meta name="description" content="Site pessoal de conclusão do Ensino Médio: linha do tempo da trajetória escolar e portfólio com as 15 redações completas, em azul-marinho, branco e preto." />
+  <meta name="author" content="Gabriel Teixeira da Silva" />
+  <meta name="theme-color" content="#0a192f" />
 
-  <meta name="description" content="Portfólio de redações de Lucas Marcelo de Freitas">
+  <!-- Open Graph (para o link ficar bonito no WhatsApp, Instagram etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gabriel Teixeira da Silva — Portfólio de Redações | Ensino Médio" />
+  <meta property="og:description" content="15 redações completas e a linha do tempo da trajetória escolar." />
+  <meta property="og:image" content="img/og-cover.jpg" />
 
-  <title>Lucas Marcelo de Freitas | Portfólio</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
 
-  <link rel="stylesheet" href="css/style.css">
+  <!-- CSS próprio (azul-marinho, branco e preto). Nenhuma dependência externa. -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Se o JavaScript estiver desativado, as seções aparecem normalmente -->
+  <noscript>
+    <style>[data-reveal] { opacity: 1 !important; transform: none !important; }</style>
+  </noscript>
 </head>
-
 <body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
-  <header class="header">
-    <a class="brand" href="#inicio">LMF<span>.</span></a>
-
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
-      ☰
-    </button>
-
-    <nav class="nav" id="nav">
-      <a href="#inicio">Início</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#colecao">Redações</a>
-      <a href="#final">Contato</a>
-    </nav>
-  </header>
-
-  <main>
-
-    <section class="hero" id="inicio">
-
-      <div class="hero-content">
-        <p class="eyebrow">PORTFÓLIO DE PRODUÇÃO TEXTUAL</p>
-
-        <h1>
-          Ideias, temas<br>
-          e <span>reflexões.</span>
-        </h1>
-
-        <p class="hero-text">
-          Uma coleção de textos sobre sociedade, tecnologia,
-          meio ambiente e os desafios do nosso tempo.
-        </p>
-
-        <a class="primary-btn" href="#colecao">
-          Explorar redações <span>↘</span>
-        </a>
-      </div>
-
-      <div class="hero-art">
-        <div class="art-circle circle-one"></div>
-        <div class="art-circle circle-two"></div>
-        <div class="art-line"></div>
-
-        <div class="art-label">
-          ESCRITA<br>
-          • IDEIAS<br>
-          • REFLEXÃO
-        </div>
-      </div>
-
-    </section>
-
-    <section class="about section" id="sobre">
-
-      <p class="eyebrow">01 / APRESENTAÇÃO</p>
-
-      <h2>
-        Um pouco sobre<br>
-        <span>este portfólio.</span>
-      </h2>
-
-      <p class="about-copy">
-        Este espaço reúne produções textuais desenvolvidas ao
-        longo da trajetória escolar. Cada redação aborda um
-        tema diferente e representa uma oportunidade de
-        pesquisar, refletir e expressar ideias sobre o mundo.
-      </p>
-
-      <p class="student-name">
-        Lucas Marcelo de Freitas
-      </p>
-
-    </section>
-
-    <section class="collection section" id="colecao">
-
-      <div class="section-heading">
-
-        <div>
-          <p class="eyebrow">02 / COLEÇÃO</p>
-          <h2>Redações</h2>
-        </div>
-
-        <p class="collection-note">
-          Explore os temas e abra cada texto para ler na íntegra.
-        </p>
-
-      </div>
-
-      <div class="search-wrap">
-        <span>⌕</span>
-
-        <input
-          id="searchInput"
-          type="search"
-          placeholder="Buscar por título ou assunto..."
-          aria-label="Buscar redações"
-        >
-      </div>
-
-      <div class="essay-grid" id="essayGrid"></div>
-
-      <p class="no-results" id="noResults" hidden>
-        Nenhuma redação encontrada. Tente outra palavra.
-      </p>
-
-    </section>
-
-    <section class="closing" id="final">
-
-      <p class="eyebrow">03 / ENCERRAMENTO</p>
-
-      <h2>
-        Escrever é uma forma<br>
-        de <span>compreender.</span>
-      </h2>
-
-      <p>
-        Que cada tema seja o começo de uma nova pergunta,
-        ideia ou descoberta.
-      </p>
-
-      <a href="#inicio" class="back-top">
-        Voltar ao início ↑
+  <!-- ============================================================
+       CABEÇALHO FIXO
+       ============================================================ -->
+  <header class="site-header" id="topo">
+    <div class="wrap header-inner">
+      <a class="brand" href="#inicio" aria-label="Voltar ao início">
+        <span class="brand-mark" aria-hidden="true" data-config="iniciais">GT</span>
+        <span class="brand-text">
+          <strong data-config="nome">Gabriel Teixeira da Silva</strong>
+          <small>Portfólio de Redações</small>
+        </span>
       </a>
 
-    </section>
-
-  </main>
-
-  <footer>
-    <span>Lucas Marcelo de Freitas</span>
-    <span>Portfólio de redações · 2026</span>
-  </footer>
-
-  <div class="modal" id="essayModal" aria-hidden="true">
-
-    <div class="modal-backdrop" id="modalBackdrop"></div>
-
-    <article
-      class="modal-panel"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modalTitle"
-    >
-
-      <button class="modal-close" id="modalClose" aria-label="Fechar">
-        ×
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+        <span class="nav-toggle-label">Menu</span>
+        <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span></span>
       </button>
 
-      <p class="eyebrow" id="modalNumber"></p>
+      <nav class="site-nav" id="menu-principal" aria-label="Navegação principal">
+        <ul>
+          <li><a href="#inicio" class="is-active">Início</a></li>
+          <li><a href="#trajetoria">Trajetória</a></li>
+          <li><a href="#redacoes">Redações</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-      <h2 id="modalTitle"></h2>
+  <main id="conteudo">
 
-      <div class="modal-body" id="modalBody"></div>
+    <!-- ============================================================
+         SEÇÃO 1 — HERO / APRESENTAÇÃO
+         ============================================================ -->
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            Concluinte do Ensino Médio <span aria-hidden="true">·</span>
+            <span data-config="anoConclusao">2026</span>
+          </p>
 
-    </article>
+          <!-- ✏️ EDITE AQUI: seu nome e sua apresentação -->
+          <h1 class="hero-title">
+            Olá, eu sou<br />
+            <span class="hero-name" data-config="nome">Gabriel Teixeira da Silva</span>.
+          </h1>
 
+          <p class="hero-lead">
+            Este é o meu site de encerramento do Ensino Médio, feito para a disciplina de
+            <strong>Programação Web</strong>. Aqui reuni a minha trajetória escolar e as
+            <strong>15 redações</strong> que escrevi ao longo do 3º ano — cada texto é uma parte
+            da história que construí na escola.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#redacoes">
+              Ler as 15 redações <span aria-hidden="true">→</span>
+            </a>
+            <a class="btn btn-ghost" href="#trajetoria">Ver minha trajetória</a>
+          </div>
+
+          <dl class="hero-stats">
+            <div><dt>Redações</dt><dd>15</dd></div>
+            <div><dt>Fases da escola</dt><dd>6</dd></div>
+            <div><dt>Anos de escola</dt><dd>14</dd></div>
+          </dl>
+        </div>
+
+        <figure class="hero-figure">
+          <!-- ✏️ Troque img/perfil.jpg pela sua foto -->
+          <img src="img/perfil.jpg" width="900" height="1100"
+               alt="Foto de perfil do estudante autor do site" loading="eager" />
+          <figcaption>
+            <span class="figcaption-label">Foto de perfil</span>
+            <span class="figcaption-text">Substitua <code>img/perfil.jpg</code> pela sua foto</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Destaque inspirador exigido pelo briefing -->
+      <div class="wrap">
+        <blockquote class="hero-quote">
+          <span class="quote-mark" aria-hidden="true">“</span>
+          <p>
+            Chegar ao final do Ensino Médio é fechar um ciclo marcante para abrir as portas do
+            mundo. Cada linha de código escrita neste projeto representa não apenas o seu
+            aprendizado técnico, mas também a história única que você construiu nestes anos de
+            escola. Tenha orgulho da sua trajetória, coragem para encarar os novos desafios e a
+            certeza de que você é o único autor do seu próprio futuro!
+          </p>
+          <footer>Mensagem de encerramento <span aria-hidden="true">·</span> Ensino Médio</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 2 — LINHA DO TEMPO (MEMÓRIAS ESCOLARES)
+         ============================================================ -->
+    <section class="section" id="trajetoria">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Memórias escolares</p>
+          <h2 class="section-title">Quatorze anos de escola, em seis fases</h2>
+          <p class="section-lead">
+            Do Jardim de Infância ao 3º ano do Ensino Médio. Cada fase tem uma foto reservada e
+            um espaço de texto para eu contar os causos, as descobertas e os desafios que vivi.
+          </p>
+        </header>
+
+        <!-- Caixa do modo de edição: os textos de exemplo viram campos editáveis
+             e ficam salvos no próprio navegador (localStorage). -->
+        <div class="tl-tools" data-reveal>
+          <div class="tl-tools-copy">
+            <strong>Textos editáveis</strong>
+            <span>
+              Ative o modo de edição e escreva seus relatos direto no site: o rascunho fica salvo
+              neste navegador e você pode copiar o texto para o HTML quando terminar.
+            </span>
+          </div>
+          <div class="tl-tools-actions">
+            <button class="btn btn-sm" type="button" id="tl-toggle" aria-pressed="false">
+              <span class="tl-toggle-icon" aria-hidden="true">✎</span>
+              <span id="tl-toggle-label">Editar textos</span>
+            </button>
+            <button class="btn btn-ghost btn-sm" type="button" id="tl-reset" hidden>
+              Restaurar exemplos
+            </button>
+          </div>
+          <p class="tl-tools-status" id="tl-status" role="status" aria-live="polite"></p>
+        </div>
+
+        <ol class="timeline">
+          <!-- FASE 01 -->
+          <li class="tl-item" data-reveal>
+            <div class="tl-marker" aria-hidden="true"><span>01</span></div>
+            <article class="tl-card">
+              <div class="tl-media">
+                <!-- ✏️ Troque por img/fase-1.jpg (sua foto desta fase) -->
+                <img src="img/fase-1.jpg" width="1200" height="800" alt="Foto de lembrança do Jardim de Infância" loading="lazy" />
+                <p class="tl-caption">Jardim de Infância • primeiras descobertas</p>
+              </div>
+              <div class="tl-body">
+                <p class="tl-period" data-edit="fase-1-periodo">2013 — 2014</p>
+                <h3 class="tl-title">Jardim de Infância / Pré-escola</h3>
+                <p class="tl-text" data-edit="fase-1-texto">
+                  Foi onde tudo começou: as primeiras letras, as rodas de conversa e a descoberta de
+                  que aprender podia ser divertido. Lembro das tardes de tinta guache, das músicas
+                  de roda e da professora que guardava cada desenho na pasta com o maior cuidado.
+                </p>
+                <ul class="tl-list">
+                  <li>Primeira apresentação de teatro da escola</li>
+                  <li>Aprendi a escrever o meu nome inteiro</li>
+                </ul>
+                <p class="tl-note" data-edit="fase-1-nota">
+                  <strong>Momento marcante:</strong> o dia em que levei o meu livro preferido para
+                  a rodinha de leitura e contei a história para a turma toda.
+                </p>
+              </div>
+            </article>
+          </li>
+
+          <!-- FASE 02 -->
+          <li class="tl-item" data-reveal>
+            <div class="tl-marker" aria-hidden="true"><span>02</span></div>
+            <article class="tl-card">
+              <div class="tl-media">
+                <img src="img/fase-2.jpg" width="1200" height="800" alt="Foto de lembrança do Ensino Fundamental I" loading="lazy" />
+                <p class="tl-caption">Ensino Fundamental I • alfabetização e amizades</p>
+              </div>
+              <div class="tl-body">
+                <p class="tl-period" data-edit="fase-2-periodo">2015 — 2019</p>
+                <h3 class="tl-title">Ensino Fundamental I <span class="tl-sub">1º ao 5º ano</span></h3>
+                <p class="tl-text" data-edit="fase-2-texto">
+                  A fase em que a escola virou rotina e a turma virou família. Foram os anos das
+                  feiras de ciências, das provas de tabuada e das amizades que continuam até hoje.
+                  Foi aqui que descobri o gosto por escrever e por entender como as coisas funcionam.
+                </p>
+                <ul class="tl-list">
+                  <li>Primeiro caderno cheio de redações e desenhos</li>
+                  <li>Campeonato de soletração da escola</li>
+                </ul>
+                <p class="tl-note" data-edit="fase-2-nota">
+                  <strong>Desafio superado:</strong> perder o medo de ler em voz alta na frente da
+                  turma — hoje é uma das partes de que mais gosto nas apresentações.
+                </p>
+              </div>
+            </article>
+          </li>
+
+          <!-- FASE 03 -->
+          <li class="tl-item" data-reveal>
+            <div class="tl-marker" aria-hidden="true"><span>03</span></div>
+            <article class="tl-card">
+              <div class="tl-media">
+                <img src="img/fase-3.jpg" width="1200" height="800" alt="Foto de lembrança do Ensino Fundamental II" loading="lazy" />
+                <p class="tl-caption">Ensino Fundamental II • mudanças e descobertas</p>
+              </div>
+              <div class="tl-body">
+                <p class="tl-period" data-edit="fase-3-periodo">2020 — 2023</p>
+                <h3 class="tl-title">Ensino Fundamental II <span class="tl-sub">6º ao 9º ano</span></h3>
+                <p class="tl-text" data-edit="fase-3-texto">
+                  Anos de muitas mudanças: mais professores, mais matérias e, no meio do caminho, o
+                  ensino remoto. Aprendi a estudar com autonomia, a organizar meus horários e a
+                  pedir ajuda quando era preciso. Também foi quando comecei a me interessar por
+                  tecnologia.
+                </p>
+                <ul class="tl-list">
+                  <li>Primeiro contato com programação e robótica</li>
+                  <li>Trabalho em grupo que virou amizade para a vida</li>
+                </ul>
+                <p class="tl-note" data-edit="fase-3-nota">
+                  <strong>Curiosidade:</strong> montei meu primeiro “site” em um editor de texto
+                  simples e fiquei horas tentando descobrir por que a imagem não aparecia.
+                </p>
+              </div>
+            </article>
+          </li>
+
+          <!-- FASE 04 -->
+          <li class="tl-item" data-reveal>
+            <div class="tl-marker" aria-hidden="true"><span>04</span></div>
+            <article class="tl-card">
+              <div class="tl-media">
+                <img src="img/fase-4.jpg" width="1200" height="800" alt="Foto de lembrança do 1º ano do Ensino Médio" loading="lazy" />
+                <p class="tl-caption">1º ano • novo prédio, novas pessoas</p>
+              </div>
+              <div class="tl-body">
+                <p class="tl-period" data-edit="fase-4-periodo">2024</p>
+                <h3 class="tl-title">1º ano do Ensino Médio</h3>
+                <p class="tl-text" data-edit="fase-4-texto">
+                  Chegada ao Ensino Médio: turma nova, professores novos e a sensação de que o
+                  tempo começa a correr mais rápido. Foi o ano de descobrir o que eu gostava de
+                  estudar de verdade e de aprender a lidar com a pressão das primeiras notas.
+                </p>
+                <ul class="tl-list">
+                  <li>Primeira feira de ciências do Ensino Médio</li>
+                  <li>Decisão de me dedicar mais à leitura e à escrita</li>
+                </ul>
+                <p class="tl-note" data-edit="fase-4-nota">
+                  <strong>Momento inesquecível:</strong> a primeira redação com nota máxima — e a
+                  percepção de que escrever bem é treino, não sorte.
+                </p>
+              </div>
+            </article>
+          </li>
+
+          <!-- FASE 05 -->
+          <li class="tl-item" data-reveal>
+            <div class="tl-marker" aria-hidden="true"><span>05</span></div>
+            <article class="tl-card">
+              <div class="tl-media">
+                <img src="img/fase-5.jpg" width="1200" height="800" alt="Foto de lembrança do 2º ano do Ensino Médio" loading="lazy" />
+                <p class="tl-caption">2º ano • aprofundando temas e repertórios</p>
+              </div>
+              <div class="tl-body">
+                <p class="tl-period" data-edit="fase-5-periodo">2025</p>
+                <h3 class="tl-title">2º ano do Ensino Médio</h3>
+                <p class="tl-text" data-edit="fase-5-texto">
+                  O ano em que passei a escrever com mais frequência: redações semanais, leituras
+                  obrigatórias e muitos debates em sala. Aprendi a montar repertório, a estruturar
+                  argumentos e a revisar o próprio texto com mais criticidade.
+                </p>
+                <ul class="tl-list">
+                  <li>Rotina de uma redação por semana</li>
+                  <li>Participação em simulado e em projeto de leitura</li>
+                </ul>
+                <p class="tl-note" data-edit="fase-5-nota">
+                  <strong>Desafio superado:</strong> controlar a ansiedade para escrever no tempo
+                  da prova — hoje consigo planejar, escrever e revisar com calma.
+                </p>
+              </div>
+            </article>
+          </li>
+
+          <!-- FASE 06 -->
+          <li class="tl-item" data-reveal>
+            <div class="tl-marker" aria-hidden="true"><span>06</span></div>
+            <article class="tl-card">
+              <div class="tl-media">
+                <img src="img/fase-6.jpg" width="1200" height="800" alt="Foto de lembrança do 3º ano do Ensino Médio" loading="lazy" />
+                <p class="tl-caption">3º ano • conclusão e novos começos</p>
+              </div>
+              <div class="tl-body">
+                <p class="tl-period" data-edit="fase-6-periodo">2026</p>
+                <h3 class="tl-title">3º ano do Ensino Médio <span class="tl-sub">conclusão</span></h3>
+                <p class="tl-text" data-edit="fase-6-texto">
+                  O ano de fechar o ciclo: as 15 redações deste portfólio, o projeto de Programação
+                  Web e a preparação para o próximo passo. Foi o período mais intenso e também o
+                  mais significativo, porque cada entrega tinha um pouco de tudo o que aprendi.
+                </p>
+                <ul class="tl-list">
+                  <li>Desenvolvimento deste site em HTML, CSS e JavaScript</li>
+                  <li>Portfólio de 15 redações sobre temas contemporâneos</li>
+                </ul>
+                <p class="tl-note" data-edit="fase-6-nota">
+                  <strong>Momento marcante:</strong> ver o site funcionando pela primeira vez e
+                  perceber que o que eu escrevia também podia virar código.
+                </p>
+              </div>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEÇÃO 3 — PORTFÓLIO DE REDAÇÕES
+         ============================================================ -->
+    <section class="section section-alt" id="redacoes">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Portfólio de redações</p>
+          <h2 class="section-title">15 textos, 15 temas contemporâneos</h2>
+          <p class="section-lead">
+            Todas as redações estão aqui na íntegra. Use a busca para encontrar uma palavra-chave,
+            filtre por tema ou abra a leitura completa em uma janela confortável.
+          </p>
+        </header>
+
+        <!-- Barra de busca + contador -->
+        <div class="essay-toolbar" data-reveal>
+          <div class="search-field">
+            <label class="sr-only" for="busca-redacoes">Buscar redações por palavra-chave</label>
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+            </svg>
+            <input
+              type="search"
+              id="busca-redacoes"
+              class="search-input"
+              placeholder="Buscar por tema, título ou palavra-chave…"
+              autocomplete="off"
+              aria-describedby="resultado-busca"
+            />
+            <button class="search-clear" id="limpar-busca" type="button" aria-label="Limpar busca" hidden>×</button>
+          </div>
+          <p class="results-info" id="resultado-busca" aria-live="polite">15 redações disponíveis</p>
+        </div>
+
+        <!-- Filtros por tema -->
+        <div class="filters" role="group" aria-label="Filtrar redações por tema" data-reveal>
+          <button class="chip is-active" type="button" data-filter="todas" aria-pressed="true">Todas <span class="chip-count">15</span></button>
+          <button class="chip" type="button" data-filter="meio-ambiente" aria-pressed="false">Meio ambiente <span class="chip-count">4</span></button>
+          <button class="chip" type="button" data-filter="sociedade" aria-pressed="false">Sociedade e direitos <span class="chip-count">2</span></button>
+          <button class="chip" type="button" data-filter="saude" aria-pressed="false">Saúde e comportamento <span class="chip-count">2</span></button>
+          <button class="chip" type="button" data-filter="tecnologia" aria-pressed="false">Tecnologia e mídia <span class="chip-count">3</span></button>
+          <button class="chip" type="button" data-filter="ciencia" aria-pressed="false">Ciência e tecnologia <span class="chip-count">1</span></button>
+          <button class="chip" type="button" data-filter="economia" aria-pressed="false">Economia <span class="chip-count">2</span></button>
+          <button class="chip" type="button" data-filter="cultura" aria-pressed="false">Cultura e patrimônio <span class="chip-count">1</span></button>
+        </div>
+
+        <!-- Grade de cards: um card por redação (o texto integral fica nos
+             <template> do fim do arquivo). -->
+        <div class="essay-grid" id="lista-redacoes">
+          <!-- BEGIN:CARDS -->
+                   <article class="essay-card" data-cat="sociedade" data-num="1" data-reveal>
+          <div class="card-top">
+            <span class="card-num">01</span>
+            <span class="card-cat">Sociedade e direitos</span>
+          </div>
+          <h3 class="card-title">Migração, desafios e acolhimento na sociedade contemporânea</h3>
+          <p class="card-preview">A migração é um acontecimento muito presente nos dias de hoje e que ocorre em todo o mundo e acontece por diversos motivos guerras, crise econômica, perseguições, oportunidade de trabalho e pobreza. Nesse…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="1" aria-label="Ler a redação 1 completa: Migração, desafios e acolhimento na sociedade contemporânea">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="meio-ambiente" data-num="2" data-reveal>
+          <div class="card-top">
+            <span class="card-num">02</span>
+            <span class="card-cat">Meio ambiente</span>
+          </div>
+          <h3 class="card-title">El Niño, mudanças climáticas e preservação ambiental</h3>
+          <p class="card-preview">O El Ninõ é um fenômeno da natureza que acontece quando as águas do oceano Pacífico ficam mais quentes do que o normal. isso pode causar mudanças no clima, como muito calor, chuvas fortes e falta de chuva…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="2" aria-label="Ler a redação 2 completa: El Niño, mudanças climáticas e preservação ambiental">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="sociedade" data-num="3" data-reveal>
+          <div class="card-top">
+            <span class="card-num">03</span>
+            <span class="card-cat">Sociedade e direitos</span>
+          </div>
+          <h3 class="card-title">O respeito como caminho para a superação dos conflitos sociais na sociedade contemporânea</h3>
+          <p class="card-preview">O respeito é uma coisa essencial para que podemos caminhar para a superação dos conflitos sociais na sociedade contemporânea até porque muita das vezes as pessoas não seguem os caminhos adequados para…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="3" aria-label="Ler a redação 3 completa: O respeito como caminho para a superação dos conflitos sociais na sociedade contemporânea">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="cultura" data-num="4" data-reveal>
+          <div class="card-top">
+            <span class="card-num">04</span>
+            <span class="card-cat">Cultura e patrimônio</span>
+          </div>
+          <h3 class="card-title">A importância da preservação do patrimônio histórico e cultural</h3>
+          <p class="card-preview">A preservação do patrimônio histórico e muito importante para uma sociedade porque tende a ajudar a manter nossa história e a nossa cultura. os lugares, prédio e objetos antigos conta um pouco sobre como…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="4" aria-label="Ler a redação 4 completa: A importância da preservação do patrimônio histórico e cultural">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="ciencia" data-num="5" data-reveal>
+          <div class="card-top">
+            <span class="card-num">05</span>
+            <span class="card-cat">Ciência e tecnologia</span>
+          </div>
+          <h3 class="card-title">A exploração espacial no século XXI: ciência e cooperação</h3>
+          <p class="card-preview">A exploração espacial no século XXI apresentou um novo avanço espacial, diferentemente durante a segunda guerra mundial entre soviéticos e Estados Unidos que estavam disputando por prestígio político.Na…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="5" aria-label="Ler a redação 5 completa: A exploração espacial no século XXI: ciência e cooperação">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="meio-ambiente" data-num="6" data-reveal>
+          <div class="card-top">
+            <span class="card-num">06</span>
+            <span class="card-cat">Meio ambiente</span>
+          </div>
+          <h3 class="card-title">Extinção de espécies, impactos humanos e equilíbrio ambiental</h3>
+          <p class="card-preview">A natureza é forma por diferentes tipos de seres vivos que depende uns dos outros para poder sobreviver. No entanto, os humanos tem causado grande destruições na natureza entre queimada, desmatamento e…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="6" aria-label="Ler a redação 6 completa: Extinção de espécies, impactos humanos e equilíbrio ambiental">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="economia" data-num="7" data-reveal>
+          <div class="card-top">
+            <span class="card-num">07</span>
+            <span class="card-cat">Economia</span>
+          </div>
+          <h3 class="card-title">Desigualdades regionais no Brasil e infraestrutura</h3>
+          <p class="card-preview">O Brasil, devido a sua vasta extensão territorial e diversidade cultural, apresenta um cenário marcado por profunda desigualdade regionais que persistem ao longo da história. Desde o período colonial, o…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="7" aria-label="Ler a redação 7 completa: Desigualdades regionais no Brasil e infraestrutura">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="meio-ambiente" data-num="8" data-reveal>
+          <div class="card-top">
+            <span class="card-num">08</span>
+            <span class="card-cat">Meio ambiente</span>
+          </div>
+          <h3 class="card-title">Agronegócio e sustentabilidade: equilíbrio entre produção e preservação ambiental</h3>
+          <p class="card-preview">O crescimento do agronegócio no brasileiro nas últimas décadas consolidou o país como uma das maiores potências agrícolas do mundo. Entretanto, junto á expansão da produção, surgem desafios relacionados a…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 2 min de leitura</span>
+            <button class="card-btn" type="button" data-open="8" aria-label="Ler a redação 8 completa: Agronegócio e sustentabilidade: equilíbrio entre produção e preservação ambiental">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="tecnologia" data-num="9" data-reveal>
+          <div class="card-top">
+            <span class="card-num">09</span>
+            <span class="card-cat">Tecnologia e mídia</span>
+          </div>
+          <h3 class="card-title">Algoritmos, desinformação e consumo de conteúdo nas plataformas digitais</h3>
+          <p class="card-preview">O consentimento de pouca informação dos algoritmos tende a levantar grande preocupação da desinformação, a forma de expressão e equilíbrio nas reuniões publicas sobre o algoritmo, não se discute muito…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="9" aria-label="Ler a redação 9 completa: Algoritmos, desinformação e consumo de conteúdo nas plataformas digitais">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="meio-ambiente" data-num="10" data-reveal>
+          <div class="card-top">
+            <span class="card-num">10</span>
+            <span class="card-cat">Meio ambiente</span>
+          </div>
+          <h3 class="card-title">Eventos climáticos extremos e aquecimento global</h3>
+          <p class="card-preview">O aumento dos eventos climáticos extremos já deixou de ser uma previsão distante e passou a fazer parte da realidade. Chuvas intensas, enchentes e ondas de calor tem ocorrido com maior frequência,…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="10" aria-label="Ler a redação 10 completa: Eventos climáticos extremos e aquecimento global">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="saude" data-num="11" data-reveal>
+          <div class="card-top">
+            <span class="card-num">11</span>
+            <span class="card-cat">Saúde e comportamento</span>
+          </div>
+          <h3 class="card-title">Uso de canetas emagrecedoras, saúde e hábitos saudáveis</h3>
+          <p class="card-preview">Para pessoas gordas, obesas a diminuição de peso é muito importante porque pode trazer mais proatividade e menos preguiçar de fazer certas coisas e o mundo vem trazer canetas emagrecedores que ajudam a…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="11" aria-label="Ler a redação 11 completa: Uso de canetas emagrecedoras, saúde e hábitos saudáveis">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="tecnologia" data-num="12" data-reveal>
+          <div class="card-top">
+            <span class="card-num">12</span>
+            <span class="card-cat">Tecnologia e mídia</span>
+          </div>
+          <h3 class="card-title">Avanço da inteligência artificial, riscos e impactos na educação</h3>
+          <p class="card-preview">Ao longo do tempo a inteligência artificial teve um aumento nas atualizações onde no proporcionou assuntos e pesquisas mais eficazes e segura, essas inteligência artificiais tender ajudar todas as pessoas…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="12" aria-label="Ler a redação 12 completa: Avanço da inteligência artificial, riscos e impactos na educação">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="economia" data-num="13" data-reveal>
+          <div class="card-top">
+            <span class="card-num">13</span>
+            <span class="card-cat">Economia</span>
+          </div>
+          <h3 class="card-title">Apostas esportivas entre jovens e impactos na educação superior</h3>
+          <p class="card-preview">Nos últimos anos, tem se observado um fenômeno crescente entre os jovens: o adiamento da entrada na faculdade em razão do investimento em aposta esportivas. Este ensaio argumentativo analisa as causas e…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="13" aria-label="Ler a redação 13 completa: Apostas esportivas entre jovens e impactos na educação superior">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="tecnologia" data-num="14" data-reveal>
+          <div class="card-top">
+            <span class="card-num">14</span>
+            <span class="card-cat">Tecnologia e mídia</span>
+          </div>
+          <h3 class="card-title">Inclusão digital e superação das barreiras tecnológicas na sociedade</h3>
+          <p class="card-preview">A era digital transformou radicalmente a sociedade, abrindo novas avenidas para comunicação, educação, trabalho e lazer. No entanto, essa revolução tecnológica não e universalmente acessível. A exclusão…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="14" aria-label="Ler a redação 14 completa: Inclusão digital e superação das barreiras tecnológicas na sociedade">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+        <article class="essay-card" data-cat="saude" data-num="15" data-reveal>
+          <div class="card-top">
+            <span class="card-num">15</span>
+            <span class="card-cat">Saúde e comportamento</span>
+          </div>
+          <h3 class="card-title">Cultura fitness nas redes sociais e exposição de jovens</h3>
+          <p class="card-preview">Jovens começaram a postar os músculos, barrigas trincada em desafios na Rede Socias e até em vídeo para rede social na mesma.Adultos estão discutindo sobre limites e cuidados para evitar que esse assunto…</p>
+          <div class="card-foot">
+            <span class="card-meta">1 parágrafo · 1 min de leitura</span>
+            <button class="card-btn" type="button" data-open="15" aria-label="Ler a redação 15 completa: Cultura fitness nas redes sociais e exposição de jovens">
+              Ler redação <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </article>
+      <!-- END:CARDS -->
+        </div>
+
+        <!-- Estado vazio da busca -->
+        <div class="empty-state" id="sem-resultados" hidden>
+          <p class="empty-title">Nenhuma redação encontrada</p>
+          <p class="empty-text">Tente outra palavra-chave ou selecione o tema “Todas”.</p>
+          <button class="btn btn-ghost" type="button" id="reset-filtros">Limpar busca e filtros</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SOBRE
+         ============================================================ -->
+    <section class="section" id="sobre">
+      <div class="wrap sobre-grid">
+        <div class="sobre-text" data-reveal>
+          <p class="eyebrow">Sobre este projeto</p>
+          <h2 class="section-title">Um site feito à mão, linha por linha</h2>
+          <p>
+            Este projeto nasceu como trabalho final de <strong>Programação Web</strong>, no 3º ano
+            do Ensino Médio. A ideia era simples: guardar em um só lugar as redações que escrevi
+            durante o ano e, ao mesmo tempo, colocar em prática o que aprendi de HTML, CSS e
+            JavaScript.
+          </p>
+          <p>
+            Todo o site foi escrito do zero, sem frameworks e sem bibliotecas externas: apenas
+            HTML5 semântico, CSS com variáveis de cor e um JavaScript puro que cuida do menu,
+            das animações de rolagem, da busca e da janela de leitura das redações.
+          </p>
+          <p class="sobre-sign">
+            <span data-config="nome">Gabriel Teixeira da Silva</span>
+            <span class="sobre-sign-meta">Concluinte do Ensino Médio <span aria-hidden="true">·</span> <span data-config="anoConclusao">2026</span></span>
+          </p>
+        </div>
+
+        <aside class="sobre-cards" data-reveal>
+          <div class="info-card">
+            <h3>Ficha técnica</h3>
+            <ul class="info-list">
+              <li><span>HTML5</span> estrutura semântica</li>
+              <li><span>CSS3</span> variáveis, grid e responsividade</li>
+              <li><span>JavaScript</span> interações sem bibliotecas</li>
+              <li><span>Hospedagem</span> GitHub Pages</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h3>O que você encontra aqui</h3>
+            <ul class="info-list">
+              <li><span>15</span> redações completas com busca e filtro</li>
+              <li><span>06</span> fases da trajetória escolar</li>
+              <li><span>01</span> leitor em janela modal acessível</li>
+            </ul>
+          </div>
+          <div class="info-card info-card--quote">
+            <p>
+              “Escrever é organizar o pensamento. Programar também. Este site é a prova de que as
+              duas coisas cabem no mesmo lugar.”
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTATO
+         ============================================================ -->
+    <section class="section section-alt" id="contato">
+      <div class="wrap contato-inner" data-reveal>
+        <div>
+          <p class="eyebrow">Contato</p>
+          <h2 class="section-title">Vamos conversar?</h2>
+          <p class="section-lead">
+            Quer comentar uma redação, sugerir um tema ou falar sobre o projeto? É só me chamar.
+          </p>
+        </div>
+        <div class="contato-actions">
+          <!-- ✏️ EDITE AQUI: seu e-mail e seu usuário do GitHub -->
+          <a class="btn btn-primary" href="mailto:seu.email@exemplo.com">Enviar e-mail</a>
+          <a class="btn btn-ghost" href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="footer-brand"><span data-config="nome">Gabriel Teixeira da Silva</span> <span aria-hidden="true">·</span> Portfólio de Redações</p>
+      <p class="footer-note">Feito com HTML, CSS e JavaScript puro <span aria-hidden="true">·</span> Hospedado no GitHub Pages</p>
+      <a class="footer-top" href="#topo">Voltar ao topo <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante de voltar ao topo -->
+  <button class="to-top" id="to-top" type="button" aria-label="Voltar ao topo" hidden>
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <!-- ============================================================
+       JANELA MODAL DE LEITURA
+       ============================================================ -->
+  <div class="modal" id="modal-redacao" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" hidden>
+    <div class="modal-overlay" data-close="overlay"></div>
+    <div class="modal-panel" role="document">
+      <div class="modal-head">
+        <p class="modal-hint">Leitura completa <span aria-hidden="true">·</span> <kbd>Esc</kbd> para fechar</p>
+        <button class="modal-close" type="button" data-close="button" aria-label="Fechar leitura">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <!-- O conteúdo da redação é injetado aqui pelo JavaScript -->
+      <div class="modal-body" id="modal-conteudo"></div>
+
+      <div class="modal-foot">
+        <button class="modal-nav" type="button" data-nav="prev">
+          <span aria-hidden="true">←</span> Anterior
+        </button>
+        <p class="modal-count" id="modal-contador">1 de 15</p>
+        <button class="modal-nav" type="button" data-nav="next">
+          Próxima <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CONTEÚDO INTEGRAL DAS REDAÇÕES
+       Cada <template> guarda uma redação completa (transcrita do PDF
+       original); o JavaScript copia o conteúdo para a janela modal.
+       ============================================================ -->
+  <div class="templates" hidden>
+    <!-- BEGIN:TEMPLATES -->
+      <template id="redacao-1" data-cat="sociedade" data-num="1">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 01 <span aria-hidden="true">·</span> Sociedade e direitos</p>
+          <h2 class="reader-title">Migração, desafios e acolhimento na sociedade contemporânea</h2>
+          <p class="reader-meta">194 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>A migração é um acontecimento muito presente nos dias de hoje e que ocorre em todo o mundo e acontece por diversos motivos guerras, crise econômica, perseguições, oportunidade de trabalho e pobreza. Nesse contexto muitas pessoas tende a deixar seu país Natal e ir em busca de segurança e melhor condição de vidas. Mas ao entrar em um país novo enfrentam diversos desafios como desigualdade, idioma, preconceito entre outros.Em curto prazo as pessoa tem que se adaptar a nova cultura, sociedade. Isso pode ser difícil por conta de faltas de oportunidades de emprego e discriminação. Muitas pessoas tende a mostrar mais dificuldade em achar uma moradia por conta do preço.Em outro lado a migração pode ajudar a contribuir na diversidade cultural pro desenvolvimento econômico dos países que recebem pessoas pra dentro do seus sistema.Dessa maneira o governo acaba criando políticas públicas de acolhimento pode garantir oportunidade de emprego e serviço básicos e alguns países até saúde. Além disso escola deve fazer um posicionamento a promover um respeito pela cultura e poder combater contra a xenofobia, diante disso será possível criar uma sociedade mais justa, exclusiva e passível de enfrentar novos desafios no mundo globalizado.</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-2" data-cat="meio-ambiente" data-num="2">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 02 <span aria-hidden="true">·</span> Meio ambiente</p>
+          <h2 class="reader-title">El Niño, mudanças climáticas e preservação ambiental</h2>
+          <p class="reader-meta">195 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>O El Ninõ é um fenômeno da natureza que acontece quando as águas do oceano Pacífico ficam mais quentes do que o normal. isso pode causar mudanças no clima, como muito calor, chuvas fortes e falta de chuva em alguma regiões. Por isso, ele pode trazer problemas para as pessoas, animais e as plantas.As mudanças climáticas estão deixando o nosso planeta cada vez mais quente. Isso acontece por causa da poluição, das queimadas e do desmatamento. O El Ninõ também pode aumentar o calor e deixar algumas situações ainda piores, causando secas, enchentes e dificuldades para os agricultores plantarem seus alimentos.Na minha opinião, precisamos cuidar melhor do nosso planeta, porque a terra é a nossa casa. Podemos ajudar economizando, não jogando lixos nas ruas, plantando árvores e evitando fazer queimadas. Também devemos cuidar dos animais e das florestas pois ele são muitos importantes para a natureza.Concluindo, o El Ninõ é as mudanças climáticas podem trazer muitos problemas para o nosso mundo. Por isso, toda as pessoas precisam fazer a sua parte para proteger o meio ambiente. Se cada um ajudar um pouquinho, podemos ter um planeta mais limpo, bonito e saudável para as futuras gerações.</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-3" data-cat="sociedade" data-num="3">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 03 <span aria-hidden="true">·</span> Sociedade e direitos</p>
+          <h2 class="reader-title">O respeito como caminho para a superação dos conflitos sociais na sociedade contemporânea</h2>
+          <p class="reader-meta">150 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>O respeito é uma coisa essencial para que podemos caminhar para a superação dos conflitos sociais na sociedade contemporânea até porque muita das vezes as pessoas não seguem os caminhos adequados para supera o conflito sociais tende a superar seus valores para que possamos não só nos tornamos pessoas melhores mais tão nem mostra que podemos superar nos problemas de valores e desigualdade frequentemente. Muita das vezes desigualdade é causa pelo xenofobias esta abordagem teórica associada a pensador Karl Marks postulado que a sociedade é composta por grupos distintos que competem por recursos. A sociedade busca mecanismo na mediação, como direito, o ministro público e a defensoria pública para poder conter os conflitos e evitar os ataques físicos muita das vezes impulsionadas por esta ruptura de ataque. Esse conflitos muitas vezes são lutas pela agência e poder da sociedade é esse assunto todo pode gerar mais conflito que o normal.</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-4" data-cat="cultura" data-num="4">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 04 <span aria-hidden="true">·</span> Cultura e patrimônio</p>
+          <h2 class="reader-title">A importância da preservação do patrimônio histórico e cultural</h2>
+          <p class="reader-meta">154 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>A preservação do patrimônio histórico e muito importante para uma sociedade porque tende a ajudar a manter nossa história e a nossa cultura. os lugares, prédio e objetos antigos conta um pouco sobre como as pessoas viviam antigamente e ajudam as novas geração a conhecer melhor o passado.Outro ponto importante e a educação, os lugares histórico podem ser usado para ensinar os alunos de maneira diferente mostrar formas novas dos acontecimentos do passado.O patrimônio também faz parte de identidade de um povo. cada construção ou objeto sua historia e apresenta a parte da cultura de uma comunidade, por isso preservar esse lugares e uma forma de valorizar aquilo que foi deixado pelos nosso antecessores e não deixar que essas historia sejam esquecidasPortanto preservar o patrimônio historio e uma forma de cuidar da nossa historia e da identidade da sociedade. E importante que as pessoas e os governo entendam esse valor e façam sua parte.</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-5" data-cat="ciencia" data-num="5">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 05 <span aria-hidden="true">·</span> Ciência e tecnologia</p>
+          <h2 class="reader-title">A exploração espacial no século XXI: ciência e cooperação</h2>
+          <p class="reader-meta">149 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>A exploração espacial no século XXI apresentou um novo avanço espacial, diferentemente durante a segunda guerra mundial entre soviéticos e Estados Unidos que estavam disputando por prestígio político.Na atualidade a exploração espacial estuda pesquisa científica, comunicação e segurança e missões para outros planetas.Nos dias atuais a exploração espacial está com objetivos de viajar novamente a lua, conhecer novos planetas e se possui vida nos planetas, observar o planeta e suas mudanças, melhorar a comunicação e navegação.O lixo espacial pode contaminar o meio ambiente mais pra acontecer e necessário usar itens que não contaminem estudar como o ferrou ou o aço reagem durante muito tempo na água, dependendo pode não contamine o meio ambiente mas precisamos estudar sobre.A exploração espacial deixou de ser apenas uma guerra e passou a ser uma nova era de ciência e cooperação internacional com avanços apliando o conhecimento espacial e gerando tecnologia para a terra.</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-6" data-cat="meio-ambiente" data-num="6">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 06 <span aria-hidden="true">·</span> Meio ambiente</p>
+          <h2 class="reader-title">Extinção de espécies, impactos humanos e equilíbrio ambiental</h2>
+          <p class="reader-meta">129 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>A natureza é forma por diferentes tipos de seres vivos que depende uns dos outros para poder sobreviver. No entanto, os humanos tem causado grande destruições na natureza entre queimada, desmatamento e caças ilegal de animais. E um assunto que apresenta uma grande ameaça para a natureza é um desequilíbrio para o planeta.Em questão o desmatamento, a poluição, a caça ilegal essa questões pode causar extinção de diferentes espécies. A tartaruga tende a enfrentar grande dificuldades para sobreviver por conta do das poluição causadas no oceano e na praia, além disso grande parte das espécies podem afetar a cadeia alimentar, causando desequilíbrio no ecossistema.Nesse sentindo, é necessário que o governo possa estar fortalecendo a as leis ambientais e fazendo um projeto mais rígido sobre o combate à caça, poluições</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-7" data-cat="economia" data-num="7">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 07 <span aria-hidden="true">·</span> Economia</p>
+          <h2 class="reader-title">Desigualdades regionais no Brasil e infraestrutura</h2>
+          <p class="reader-meta">156 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>O Brasil, devido a sua vasta extensão territorial e diversidade cultural, apresenta um cenário marcado por profunda desigualdade regionais que persistem ao longo da história. Desde o período colonial, o desenvolvimento econômico foi concentrado de maneira desigual, privilegiando o litoral e, posteriormente, o sudeste, em detrimento de áreas como norte e o nordeste. A desigualdade entre as regiões brasileiras possui raizes história profundas que moldaram a atual organização do país, durante séculos, o ciclo do café e o posterior industrialização concentraram a maior parte dos investimentos na região sudeste, criando um pelo de desenvolvimento que atraiu tanto capital como fornecedores de matéria prima ou receptores de investimento limitados. Essa herança gerou um abismo de infraestrutura que dificulta a interação nacional. A falta de saneamento básico, energia elétrica e redes de transporte eficiente nessas áreas menos favorecidos limita a produtividade local e afasta pontenciais investimento que poderiam diversificar a economia, perpetuando um ciclo vicioso de exclusão social</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-8" data-cat="meio-ambiente" data-num="8">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 08 <span aria-hidden="true">·</span> Meio ambiente</p>
+          <h2 class="reader-title">Agronegócio e sustentabilidade: equilíbrio entre produção e preservação ambiental</h2>
+          <p class="reader-meta">369 palavras · 2 min de leitura</p>
+          <div class="reader-text">
+            <p>O crescimento do agronegócio no brasileiro nas últimas décadas consolidou o país como uma das maiores potências agrícolas do mundo. Entretanto, junto á expansão da produção, surgem desafios relacionados a preservação ambiental e ao uso consciente dos recursos naturais. Nesse contexto, torna-se essencial discutir formas de conciliar desenvolvimento econômico e sustentabilidade, garantindo que a produtividade no campo não comprometa as futuras gerações. Em primeiro lugar, é importante destacar que o agronegócio possui grande relevancia para a economia nacional. O setor e responsável pela geração de empregos, pelo fortalecimento das exportações e pelo abastecimento alimentar tanto interno quanto externo. Contudo, praticas inadequadas, como desmatamento ilegal, uso excessivo de agrotóxicos e degrção do solo, ainda representam ameaças significativas ao equilíbrio ambiental. Dessa forma, percebe-se a custa da destruição dos recursos naturais. Alem disso, a adoção de tecnologia sustentáveis demonstra que e possível produzir de maneira eficiente sem prejudicar o meio ambiente. O texto de apoio evidencia essa realidade ao apresentar iniciativas da Sanepar no Show Rural, como o reaproveitamento do lodo de esgoto tratado para a produção de biossólidos utilizados como biofertilizantes. Essa pratica contribui para a melhoria do solo, reduz residuos e diminiu impactos ambientais. Assim, exemplos como esse comprovam que inovação de sustentabilidade podem caminhar juntas no fortalecimento do agronegócio brasileiro. Ademais, a preservacao ambiental e fundamental para a propia continuidade da producao agricola. A destruicao de nascentes, o desperdicio de agua e as mudancas climaticas afetam diretamente a produtividade no campo. Portanto, ibnvestir em conservacao ambiental nao e apenas uma questao escologica, torna-se indispensavel a participacao conjunta do governo, das empresas e da sociedade na construcao de politicas sustentaveis. Portanto, para garantir o equilibrio entre produção agricola e preservação ambiental, o governo federal, em parceria com o ministerio da agricultura e orgão ambientais, deve ampliar incetivos fiscais e linhas de crédito para produtores ruraris que adotem praticas sustentáveis, como reutilização de residuos, preservação de nascentes e redução do uso de agrotóxicos. Alem disso, as escola e os meio de comunicação devem promover campanhas de conscientizção sobre sustentabilidade no campo, por meio de projetos educativos e divulgação de informações acessiveis a população. Dessa maneira, sera possivel fortalecer o agronegócio brasileiro sem comprometer os recursos naturais nescessários para futuras gerações.</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-9" data-cat="tecnologia" data-num="9">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 09 <span aria-hidden="true">·</span> Tecnologia e mídia</p>
+          <h2 class="reader-title">Algoritmos, desinformação e consumo de conteúdo nas plataformas digitais</h2>
+          <p class="reader-meta">157 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>O consentimento de pouca informação dos algoritmos tende a levantar grande preocupação da desinformação, a forma de expressão e equilíbrio nas reuniões publicas sobre o algoritmo, não se discute muito sobre a logica dos sistemas de recomendação do conteúdo que vemos passar na rede ou plataforma de acesso esta nidificação de comunidade de tende a gostar bastante sobre a sociologia da computação traduzi-o em condignos e previsões algorítmicas. Esse conteúdo pode criar recomendações e avaliações sobre como o comportamento de grande grupos de usuário, porque você consome tanto os conteúdos, e isso todos esses dados se cruzam com outros conteúdo de outras pessoas que procuram o mesmo conteúdo.Esta logica além de beneficiar os criadores tende a ser mal remunerados, estão centralizando tudo dados, conteúdos, links entre outros para controlar as métricas de performance que entrega entre os artista.Na área de comunicação é importante relatar os efeitos mais preocupante dos algoritmos em confiar na programação radio ou manchete.</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-10" data-cat="meio-ambiente" data-num="10">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 10 <span aria-hidden="true">·</span> Meio ambiente</p>
+          <h2 class="reader-title">Eventos climáticos extremos e aquecimento global</h2>
+          <p class="reader-meta">160 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>O aumento dos eventos climáticos extremos já deixou de ser uma previsão distante e passou a fazer parte da realidade. Chuvas intensas, enchentes e ondas de calor tem ocorrido com maior frequência, evidenciando os impactos direitos das ações humanas no meio ambiente. A emissão de gases de efeito estufa intensifica o aquecimento global, alterando o equilíbrio climático e tornando esses fenômenos mais severos. Casos recentes, como as fortes chuvas do sul do brasil, mostram como essas mudanças afetam diretamente a população, causando prejuízos matérias e perdas humanas. Além disso, eventos oposto como secas prolongadas também demonstram a instabilidade do clima. diante desse cenário, torna-se urgente a adoção de medidas eficazes, como a redução das emissões e investimentos politicas de adaptação. A conscientização coletiva e ações governamentais são essências para minimizar os possíveis impactos e garantir um futuro mais equilibrado para as próximas gerações.Em outras palavras, o avanço das mudanças climáticas intensifica eventos extremos e evidencia a urgência de ações concretas.</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-11" data-cat="saude" data-num="11">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 11 <span aria-hidden="true">·</span> Saúde e comportamento</p>
+          <h2 class="reader-title">Uso de canetas emagrecedoras, saúde e hábitos saudáveis</h2>
+          <p class="reader-meta">158 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>Para pessoas gordas, obesas a diminuição de peso é muito importante porque pode trazer mais proatividade e menos preguiçar de fazer certas coisas e o mundo vem trazer canetas emagrecedores que ajudam a ter uma diminuição de peso mais rápida, mas essas caneta podem ser perigosas porque certas caneta de emagrecimento tendem a cortar a vontade de comer e isso pode ser prejudicial para as pessoas porque isso pode fazer com que você tenha desmaio, falta de vontade fazer coisas entre outros.O uso das canetas emagrecedores devem ser usados com auxílio médio pra que possa ajudar as pessoas a não terem problemas de saúde, muita das vezes a caneta seria a melhor opção, sim isso é verdade mais não adianta você tomar caneta emagrecedora e não fazer academia melhorar sua alimentação se você não fizer isso vai estar jogando dinheiro no lixo e você nunca vai ver seu corpo magro ou definido pois não faz as escolha corretas</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-12" data-cat="tecnologia" data-num="12">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 12 <span aria-hidden="true">·</span> Tecnologia e mídia</p>
+          <h2 class="reader-title">Avanço da inteligência artificial, riscos e impactos na educação</h2>
+          <p class="reader-meta">173 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>Ao longo do tempo a inteligência artificial teve um aumento nas atualizações onde no proporcionou assuntos e pesquisas mais eficazes e segura, essas inteligência artificiais tender ajudar todas as pessoas de forma prática e o uso da IA pode recorrer pra assuntos criminosos oque eu quero dizer é que muitas pessoas estão usando IA de forma inadequada para conseguir vantagem em cima de pessoa, mais claro isso pode ser fakenews pois muitas inteligência artificias tem em sua programação proibições que não deixam fazer atos criminosos ou fazer algo ofensivo.Ao decorrer do ano o uso de IA aumentou em 99.99% principalmente nas escola onde alunos usam a IA para se beneficiar de provas atividades e até mesmo conseguir fazer apresentação de imagem e texto, oque tem de errado nisso para alguns isso não é nada mas acaba prejudicando os alunos de desenvolver e apreender coisas novas e até atividades, mas o futuro está chegando e o avanço da tecnologia vem nos mudando e Mudando o mundo então não temos muito oque fazer apenas aceitar</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-13" data-cat="economia" data-num="13">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 13 <span aria-hidden="true">·</span> Economia</p>
+          <h2 class="reader-title">Apostas esportivas entre jovens e impactos na educação superior</h2>
+          <p class="reader-meta">159 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>Nos últimos anos, tem se observado um fenômeno crescente entre os jovens: o adiamento da entrada na faculdade em razão do investimento em aposta esportivas. Este ensaio argumentativo analisa as causas e consequência desses comportamento, além de discutir as implicações sócias e educacionais desse cenário. Um dos principais pontos que merece destaque é o acesso facilitado as plataformas de aposta. Com a popularização da internet e dos smartphones, muitos jovens encontram nos jogos de azar uma forma rápida de ganhar dinheiro. Essa facilidade tra a tona uma questão relevante sobre o quanto as pessoas se tornaram atraentes. As propagandas constante, que muitas vezes incluem celebridades e influenciadores contribuem para normalizar essa práticas entre o público jovem. O conceito de ganhar dinheiro fácil seduz muitos, que veem nas aposta uma alternativa viável pra evitar as longas jornadas de estudos e disciplina que a educação superior requer. Além disso é importante considerar os impactos a longo prazo desse comportamento na sociedade</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-14" data-cat="tecnologia" data-num="14">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 14 <span aria-hidden="true">·</span> Tecnologia e mídia</p>
+          <h2 class="reader-title">Inclusão digital e superação das barreiras tecnológicas na sociedade</h2>
+          <p class="reader-meta">200 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>A era digital transformou radicalmente a sociedade, abrindo novas avenidas para comunicação, educação, trabalho e lazer. No entanto, essa revolução tecnológica não e universalmente acessível. A exclusão digital, definida como lacuna entre aqueles que têm acesso e sabem usar as tecnologias de informação e comunicação (TICs) e aqueles que não tem, é um obstáculo significativo para o desenvolvimento equitativo. A inclusão digital, por sua vez buscar mitigar essas barreiras tecnológicas que perpetuam desigualdades. Este ensaio explora a importância da inclusão digital e as estratégias para superar as barreiras tecnológicas, visando uma sociedade mais justa e participativas. A inclusão digital não é apenas uma questão de acesso à tecnologia, mas um pilar para a construção de um sociedade mais justa, equitativa e democrática. As barreiras tecnológicas, sejam elas de infraestrutura, custo, alfabetização ou culturais, criam e perpetuam desigualdade, limitando o potencial de indivíduos e comunidades, ao implementar políticas públicas eficazes, investir em infraestrutura, promover a capacitação digital e desenvolver conteúdos acessíveis, é possível reduzir significativamente essas barreiras. A jornada rumo a inclusão digital é contínua e exige o engajamento de todos os setores da sociedade, visando garantir que ninguém seja deixado para trás na revolução tecnológica que molda o nosso futuro.</p>
+          </div>
+        </article>
+      </template>
+      <template id="redacao-15" data-cat="saude" data-num="15">
+        <article class="reader">
+          <p class="reader-eyebrow">Redação 15 <span aria-hidden="true">·</span> Saúde e comportamento</p>
+          <h2 class="reader-title">Cultura fitness nas redes sociais e exposição de jovens</h2>
+          <p class="reader-meta">194 palavras · 1 min de leitura</p>
+          <div class="reader-text">
+            <p>Jovens começaram a postar os músculos, barrigas trincada em desafios na Rede Socias e até em vídeo para rede social na mesma.Adultos estão discutindo sobre limites e cuidados para evitar que esse assunto possa prosseguir, pois esses jovens tende a ter entre 12 a 17 anos.O tema fitness está em alta e crescendo mais e mais, e isso está preocupando os pais pois é algo muito delicado e mesmo sendo algo fitness que é algo saudável não podemos negar isso, mas devemos mostrar a realidade por trás das câmera e redes sociais em questão de postar fotos seminu mostrado os músculo e a barriguinha trincada.Devemos olhar mais o celulares dos jovens que tendem a fazer isso para evitarmos esse tipo de problema, pois vivemos em um mundo onde é muito fácil termos acesso a fatos e dados sobre os jovens.Podemos também fazer uma pesquisa que mostra a proposta para solucionar esse problema com os jovens.Essa moda fitness pode acabar cedendo para conteúdos inapropriados pessoas tirando prints fotos e vendendo em cima de jovens que nem sabe sobre esse assunto, devemos tomar uma atitude rápida e eficaz que ajudem tantos as crianças, jovens e adultos.</p>
+          </div>
+        </article>
+      </template>
+      <!-- END:TEMPLATES -->
   </div>
 
   <script src="js/script.js"></script>
-
 </body>
 </html>

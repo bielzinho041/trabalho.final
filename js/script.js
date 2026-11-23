@@ -1,91 +1,731 @@
-const essays = [
-  {
-    title: "Eventos climáticos extremos e mudanças climáticas",
-    summary: "O aumento dos fenômenos extremos e a necessidade de medidas para reduzir seus impactos.",
-    text: `O aumento dos eventos climáticos extremos já deixou de ser uma previsão distante e passou a fazer parte da realidade. Chuvas intensas, enchentes e ondas de calor tem ocorrido com maior frequência, evidenciando os impactos direitos das ações humanas no meio ambiente. A emissão de gases de efeito estufa intensifica o aquecimento global, alterando o equilíbrio climático e tornando esses fenômenos mais severos. Casos recentes, como as fortes chuvas do sul do brasil, mostram como essas mudanças afetam diretamente a população, causando prejuízos matérias e perdas humanas. Além disso, eventos oposto como secas prolongadas também demonstram a instabilidade do clima. diante desse cenário, torna-se urgente a adoção de medidas eficazes, como a redução das emissões e investimentos politicas de adaptação. A conscientização coletiva e ações governamentais são essências para minimizar os possíveis impactos e garantir um futuro mais equilibrado para as próximas gerações.Em outras palavras, o avanço das mudanças climáticas intensifica eventos extremos e evidencia a urgência de ações concretas.`
-  },
+/* =============================================================================
+   PORTFÓLIO DE REDAÇÕES — GABRIEL TEIXEIRA DA SILVA
+   JavaScript puro (sem bibliotecas). Organizado em módulos independentes:
 
-  {
-    title: "Canetas emagrecedoras e saúde",
-    summary: "Reflexões sobre emagrecimento, riscos, acompanhamento médico e hábitos saudáveis.",
-    text: `Para pessoas gordas, obesas a diminuição de peso é muito importante porque pode trazer mais proatividade e menos preguiçar de fazer certas coisas e o mundo vem trazer canetas emagrecedores que ajudam a ter uma diminuição de peso mais rápida, mas essas caneta podem ser perigosas porque certas caneta de emagrecimento tendem a cortar a vontade de comer e isso pode ser prejudicial para as pessoas porque isso pode fazer com que você tenha desmaio, falta de vontade fazer coisas entre outros.O uso das canetas emagrecedores devem ser usados com auxílio médio pra que possa ajudar as pessoas a não terem problemas de saúde, muita das vezes a caneta seria a melhor opção, sim isso é verdade mais não adianta você tomar caneta emagrecedora e não fazer academia melhorar sua alimentação se você não fizer isso vai estar jogando dinheiro no lixo e você nunca vai ver seu corpo magro ou definido pois não faz as escolha corretas`
-  },
+   00. Configuração rápida (nome, e-mail, GitHub)
+   01. Cabeçalho: sombra ao rolar e menu responsivo
+   02. Navegação: destaque da seção visível
+   03. Animações de revelação ao rolar
+   04. Linha do tempo: barra de progresso
+   04.1 Linha do tempo: textos editáveis (salvos no navegador)
+   05. Redações: busca + filtro por tema
+   06. Redações: janela modal de leitura completa
+   07. Botão voltar ao topo
+   ============================================================================= */
 
-  {
-    title: "Inteligência artificial: benefícios e riscos",
-    summary: "O avanço da IA, seu uso na escola e as preocupações com aplicações inadequadas.",
-    text: `Ao longo do tempo a inteligência artificial teve um aumento nas atualizações onde no proporcionou assuntos e pesquisas mais eficazes e segura, essas inteligência artificiais tender ajudar todas as pessoas de forma prática e o uso da IA pode recorrer pra assuntos criminosos oque eu quero dizer é que muitas pessoas estão usando IA de forma inadequada para conseguir vantagem em cima de pessoa, mais claro isso pode ser fakenews pois muitas inteligência artificias tem em sua programação proibições que não deixam fazer atos criminosos ou fazer algo ofensivo.Ao decorrer do ano o uso de IA aumentou em 99.99% principalmente nas escola onde alunos usam a IA para se beneficiar de provas atividades e até mesmo conseguir fazer apresentação de imagem e texto, oque tem de errado nisso para alguns isso não é nada mas acaba prejudicando os alunos de desenvolver e apreender coisas novas e até atividades, mas o futuro está chegando e o avanço da tecnologia vem nos mudando e Mudando o mundo então não temos muito oque fazer apenas aceitar`
-  },
+'use strict';
 
-  {
-    title: "Apostas esportivas e o adiamento dos estudos",
-    summary: "A influência das apostas na vida de jovens e suas escolhas educacionais.",
-    text: `Nos últimos anos, tem se observado um fenômeno crescente entre os jovens: o adiamento da entrada na faculdade em razão do investimento em aposta esportivas. Este ensaio argumentativo analisa as causas e consequência desses comportamento, além de discutir as implicações sócias e educacionais desse cenário. Um dos principais pontos que merece destaque é o acesso facilitado as plataformas de aposta. Com a popularização da internet e dos smartphones, muitos jovens encontram nos jogos de azar uma forma rápida de ganhar dinheiro. Essa facilidade tra a tona uma questão relevante sobre o quanto as pessoas se tornaram atraentes. As propagandas constante, que muitas vezes incluem celebridades e influenciadores contribuem para normalizar essa práticas entre o público jovem. O conceito de ganhar dinheiro fácil seduz muitos, que veem nas aposta uma alternativa viável pra evitar as longas jornadas de estudos e disciplina que a educação superior requer. Além disso é importante considerar os impactos a longo prazo desse comportamento na sociedade`
-  },
+/* =============================================================================
+   00. CONFIGURAÇÃO RÁPIDA
+   -----------------------------------------------------------------------------
+   Edite apenas este objeto para atualizar os dados que aparecem no site todo.
+   Os elementos do HTML com atributo data-config="chave" são preenchidos aqui.
+   ============================================================================= */
+const CONFIG = {
+  nome: 'Gabriel Teixeira da Silva',
+  iniciais: 'GT',
+  anoConclusao: '2026',
+  email: 'seu.email@exemplo.com',
+  github: 'https://github.com/seu-usuario',
+};
 
-  {
-    title: "Inclusão digital e desigualdade tecnológica",
-    summary: "A importância de ampliar o acesso e a capacitação para as tecnologias digitais.",
-    text: `A era digital transformou radicalmente a sociedade, abrindo novas avenidas para comunicação, educação, trabalho e lazer. No entanto, essa revolução tecnológica não e universalmente acessível. A exclusão digital, definida como lacuna entre aqueles que têm acesso e sabem usar as tecnologias de informação e comunicação (TICs) e aqueles que não tem, é um obstáculo significativo para o desenvolvimento equitativo. A inclusão digital, por sua vez buscar mitigar essas barreiras tecnológicas que perpetuam desigualdades. Este ensaio explora a importância da inclusão digital e as estratégias para superar as barreiras tecnológicas, visando uma sociedade mais justa e participativas. A inclusão digital não é apenas uma questão de acesso à tecnologia, mas um pilar para a construção de um sociedade mais justa, equitativa e democrática. As barreiras tecnológicas, sejam elas de infraestrutura, custo, alfabetização ou culturais, criam e perpetuam desigualdade, limitando o potencial de indivíduos e comunidades, ao implementar políticas públicas eficazes, investir em infraestrutura, promover a capacitação digital e desenvolver conteúdos acessíveis, é possível reduzir significativamente essas barreiras. A jornada rumo a inclusão digital é contínua e exige o engajamento de todos os setores da sociedade, visando garantir que ninguém seja deixado para trás na revolução tecnológica que molda o nosso futuro.`
-  },
+/* =============================================================================
+   00.1 UTILITÁRIOS
+   ============================================================================= */
+const $ = (selector, context = document) => context.querySelector(selector);
+const $$ = (selector, context = document) => Array.from(context.querySelectorAll(selector));
 
-  {
-    title: "Jovens, corpo e exposição nas redes sociais",
-    summary: "O crescimento de tendências fitness e os riscos da exposição de adolescentes online.",
-    text: `Jovens começaram a postar os músculos, barrigas trincada em desafios na Rede Socias e até em vídeo para rede social na mesma.Adultos estão discutindo sobre limites e cuidados para evitar que esse assunto possa prosseguir, pois esses jovens tende a ter entre 12 a 17 anos.O tema fitness está em alta e crescendo mais e mais, e isso está preocupando os pais pois é algo muito delicado e mesmo sendo algo fitness que é algo saudável não podemos negar isso, mas devemos mostrar a realidade por trás das câmera e redes sociais em questão de postar fotos seminu mostrado os músculo e a barriguinha trincada.Devemos olhar mais o celulares dos jovens que tendem a fazer isso para evitarmos esse tipo de problema, pois vivemos em um mundo onde é muito fácil termos acesso a fatos e dados sobre os jovens.Podemos também fazer uma pesquisa que mostra a proposta para solucionar esse problema com os jovens.Essa moda fitness pode acabar cedendo para conteúdos inapropriados pessoas tirando prints fotos e vendendo em cima de jovens que nem sabe sobre esse assunto, devemos tomar uma atitude rápida e eficaz que ajudem tantos as crianças, jovens e adultos.`
-  },
+/** Remove acentos e coloca em minúsculas — usado na busca. */
+const normalizar = (texto) =>
+  texto
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
 
-  {
-    title: "Desigualdade regional no Brasil",
-    summary: "As raízes históricas e os efeitos da concentração de investimentos entre regiões.",
-    text: `O Brasil, devido a sua vasta extensão territorial e diversidade cultural, apresenta um cenário marcado por profunda desigualdade regionais que persistem ao longo da história. Desde o período colonial, o desenvolvimento econômico foi concentrado de maneira desigual, privilegiando o litoral e, posteriormente, o sudeste, em detrimento de áreas como norte e o nordeste. A desigualdade entre as regiões brasileiras possui raizes história profundas que moldaram a atual organização do país, durante séculos, o ciclo do café e o posterior industrialização concentraram a maior parte dos investimentos na região sudeste, criando um pelo de desenvolvimento que atraiu tanto capital como fornecedores de matéria prima ou receptores de investimento limitados. Essa herança gerou um abismo de infraestrutura que dificulta a interação nacional. A falta de saneamento básico, energia elétrica e redes de transporte eficiente nessas áreas menos favorecidos limita a produtividade local e afasta pontenciais investimento que poderiam diversificar a economia, perpetuando um ciclo vicioso de exclusão social`
-  },
+/** Evita executar a função a cada milissegundo do evento. */
+function debounce(fn, delay = 150) {
+  let timer = null;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), delay);
+  };
+}
 
-  {
-    title: "Agronegócio e sustentabilidade",
-    summary: "Como conciliar produtividade agrícola, desenvolvimento econômico e preservação.",
-    text: `O crescimento do agronegócio no brasileiro nas últimas décadas consolidou o país como uma das maiores potências agrícolas do mundo. Entretanto, junto á expansão da produção, surgem desafios relacionados a preservação ambiental e ao uso consciente dos recursos naturais. Nesse contexto, torna-se essencial discutir formas de conciliar desenvolvimento econômico e sustentabilidade, garantindo que a produtividade no campo não comprometa as futuras gerações. Em primeiro lugar, é importante destacar que o agronegócio possui grande relevancia para a economia nacional. O setor e responsável pela geração de empregos, pelo fortalecimento das exportações e pelo abastecimento alimentar tanto interno quanto externo. Contudo, praticas inadequadas, como desmatamento ilegal, uso excessivo de agrotóxicos e degrção do solo, ainda representam ameaças significativas ao equilíbrio ambiental. Dessa forma, percebe-se a custa da destruição dos recursos naturais. Alem disso, a adoção de tecnologia sustentáveis demonstra que e possível produzir de maneira eficiente sem prejudicar o meio ambiente. O texto de apoio evidencia essa realidade ao apresentar iniciativas da Sanepar no Show Rural, como o reaproveitamento do lodo de esgoto tratado para a produção de biossólidos utilizados como biofertilizantes. Essa pratica contribui para a melhoria do solo, reduz residuos e diminiu impactos ambientais. Assim, exemplos como esse comprovam que inovação de sustentabilidade podem caminhar juntas no fortalecimento do agronegócio brasileiro. Ademais, a preservacao ambiental e fundamental para a propia continuidade da producao agricola. A destruicao de nascentes, o desperdicio de agua e as mudancas climaticas afetam diretamente a produtividade no campo. Portanto, ibnvestir em conservacao ambiental nao e apenas uma questao escologica, torna-se indispensavel a participacao conjunta do governo, das empresas e da sociedade na construcao de politicas sustentaveis. Portanto, para garantir o equilibrio entre produção agricola e preservação ambiental, o governo federal, em parceria com o ministerio da agricultura e orgão ambientais, deve ampliar incetivos fiscais e linhas de crédito para produtores ruraris que adotem praticas sustentáveis, como reutilização de residuos, preservação de nascentes e redução do uso de agrotóxicos. Alem disso, as escola e os meio de comunicação devem promover campanhas de conscientizção sobre sustentabilidade no campo, por meio de projetos educativos e divulgação de informações acessiveis a população. Dessa maneira, sera possivel fortalecer o agronegócio brasileiro sem comprometer os recursos naturais nescessários para futuras gerações.`
-  },
+/* Aplica a configuração nos elementos marcados com data-config. */
+function aplicarConfig() {
+  $$('[data-config]').forEach((el) => {
+    const chave = el.dataset.config;
+    if (CONFIG[chave]) el.textContent = CONFIG[chave];
+  });
 
-  {
-    title: "Algoritmos, plataformas e comunicação",
-    summary: "Uma reflexão sobre sistemas de recomendação, dados, conteúdos e influência algorítmica.",
-    text: `O consentimento de pouca informação dos algoritmos tende a levantar grande preocupação da desinformação, a forma de expressão e equilíbrio nas reuniões publicas sobre o algoritmo, não se discute muito sobre a logica dos sistemas de recomendação do conteúdo que vemos passar na rede ou plataforma de acesso esta nidificação de comunidade de tende a gostar bastante sobre a sociologia da computação traduzi-o em condignos e previsões algorítmicas. Esse conteúdo pode criar recomendações e avaliações sobre como o comportamento de grande grupos de usuário, porque você consome tanto os conteúdos, e isso todos esses dados se cruzam com outros conteúdo de outras pessoas que procuram o mesmo conteúdo.Esta logica além de beneficiar os criadores tende a ser mal remunerados, estão centralizando tudo dados, conteúdos, links entre outros para controlar as métricas de performance que entrega entre os artista.Na área de comunicação é importante relatar os efeitos mais preocupante dos algoritmos em confiar na programação radio ou manchete.`
-  },
-
-  {
-    title: "Preservação do patrimônio histórico",
-    summary: "A memória, a identidade cultural e a importância de preservar lugares e objetos históricos.",
-    text: `A preservação do patrimônio histórico e muito importante para uma sociedade porque tende a ajudar a manter nossa história e a nossa cultura. os lugares, prédio e objetos antigos conta um pouco sobre como as pessoas viviam antigamente e ajudam as novas geração a conhecer melhor o passado.Outro ponto importante e a educação, os lugares histórico podem ser usado para ensinar os alunos de maneira diferente mostrar formas novas dos acontecimentos do passado.O patrimônio também faz parte de identidade de um povo. cada construção ou objeto sua historia e apresenta a parte da cultura de uma comunidade, por isso preservar esse lugares e uma forma de valorizar aquilo que foi deixado pelos nosso antecessores e não deixar que essas historia sejam esquecidasPortanto preservar o patrimônio historio e uma forma de cuidar da nossa historia e da identidade da sociedade. E importante que as pessoas e os governo entendam esse valor e façam sua parte.`
-  },
-
-  {
-    title: "Exploração espacial no século XXI",
-    summary: "A mudança de objetivos da corrida espacial e as possibilidades científicas atuais.",
-    text: `A exploração espacial no século XXI apresentou um novo avanço espacial, diferentemente durante a segunda guerra mundial entre soviéticos e Estados Unidos que estavam disputando por prestígio político.Na atualidade a exploração espacial estuda pesquisa científica, comunicação e segurança e missões para outros planetas.Nos dias atuais a exploração espacial está com objetivos de viajar novamente a lua, conhecer novos planetas e se possui vida nos planetas, observar o planeta e suas mudanças, melhorar a comunicação e navegação.O lixo espacial pode contaminar o meio ambiente mais pra acontecer e necessário usar itens que não contaminem estudar como o ferrou ou o aço reagem durante muito tempo na água, dependendo pode não contamine o meio ambiente mas precisamos estudar sobre.A exploração espacial deixou de ser apenas uma guerra e passou a ser uma nova era de ciência e cooperação internacional com avanços apliando o conhecimento espacial e gerando tecnologia para a terra.`
-  },
-
-  {
-    title: "Desequilíbrio ambiental e biodiversidade",
-    summary: "Consequências do desmatamento, poluição e caça ilegal para os ecossistemas.",
-    text: `A natureza é forma por diferentes tipos de seres vivos que depende uns dos outros para poder sobreviver. No entanto, os humanos tem causado grande destruições na natureza entre queimada, desmatamento e caças ilegal de animais. E um assunto que apresenta uma grande ameaça para a natureza é um desequilíbrio para o planeta.Em questão o desmatamento, a poluição, a caça ilegal essa questões pode causar extinção de diferentes espécies. A tartaruga tende a enfrentar grande dificuldades para sobreviver por conta do das poluição causadas no oceano e na praia, além disso grande parte das espécies podem afetar a cadeia alimentar, causando desequilíbrio no ecossistema.Nesse sentindo, é necessário que o governo possa estar fortalecendo a as leis ambientais e fazendo um projeto mais rígido sobre o combate à caça, poluições`
-  },
-
-  {
-    title: "Migração, desafios e acolhimento",
-    summary: "Motivos que levam pessoas a migrar e as dificuldades e contribuições no país de destino.",
-    text: `A migração é um acontecimento muito presente nos dias de hoje e que ocorre em todo o mundo e acontece por diversos motivos guerras, crise econômica, perseguições, oportunidade de trabalho e pobreza. Nesse contexto muitas pessoas tende a deixar seu país Natal e ir em busca de segurança e melhor condição de vidas. Mas ao entrar em um país novo enfrentam diversos desafios como desigualdade, idioma, preconceito entre outros.Em curto prazo as pessoa tem que se adaptar a nova cultura, sociedade. Isso pode ser difícil por conta de faltas de oportunidades de emprego e discriminação. Muitas pessoas tende a mostrar mais dificuldade em achar uma moradia por conta do preço.Em outro lado a migração pode ajudar a contribuir na diversidade cultural pro desenvolvimento econômico dos países que recebem pessoas pra dentro do seus sistema.Dessa maneira o governo acaba criando políticas públicas de acolhimento pode garantir oportunidade de emprego e serviço básicos e alguns países até saúde. Além disso escola deve fazer um posicionamento a promover um respeito pela cultura e poder combater contra a xenofobia, diante disso será possível criar uma sociedade mais justa, exclusiva e passível de enfrentar novos desafios no mundo globalizado.`
-  },
-
-  {
-    title: "El Niño e mudanças climáticas",
-    summary: "O fenômeno El Niño, seus efeitos sobre o clima e a importância de cuidar do planeta.",
-    text: `O El Ninõ é um fenômeno da natureza que acontece quando as águas do oceano Pacífico ficam mais quentes do que o normal. isso pode causar mudanças no clima, como muito calor, chuvas fortes e falta de chuva em alguma regiões. Por isso, ele pode trazer problemas para as pessoas, animais e as plantas.As mudanças climáticas estão deixando o nosso planeta cada vez mais quente. Isso acontece por causa da poluição, das queimadas e do desmatamento. O El Ninõ também pode aumentar o calor e deixar algumas situações ainda piores, causando secas, enchentes e dificuldades para os agricultores plantarem seus alimentos.Na minha opinião, precisamos cuidar melhor do nosso planeta, porque a terra é a nossa casa. Podemos ajudar economizando, não jogando lixos nas ruas, plantando árvores e evitando fazer queimadas. Também devemos cuidar dos animais e das florestas pois ele são muitos importantes para a natureza.Concluindo, o El Ninõ é as mudanças climáticas podem trazer muitos problemas para o nosso mundo. Por isso, toda as pessoas precisam fazer a sua parte para proteger o meio ambiente. Se cada um ajudar um pouquinho, podemos ter um planeta mais limpo, bonito e saudável para as futuras gerações.`
-  },
-
-  {
-    title: "Respeito e superação dos conflitos sociais",
-    summary: "A importância do respeito, da mediação e da compreensão das desigualdades sociais.",
-    text: `O respeito é uma coisa essencial para que podemos caminhar para a superação dos conflitos sociais na sociedade contemporânea até porque muita das vezes as pessoas não seguem os caminhos adequados para supera o conflito sociais tende a superar seus valores para que possamos não só nos tornamos pessoas melhores mais tão nem mostra que podemos superar nos problemas de valores e desigualdade frequentemente. Muita das vezes desigualdade é causa pelo xenofobias esta abordagem teórica associada a pensador Karl Marks postulado que a sociedade é composta por grupos distintos que competem por recursos. A sociedade busca mecanismo na mediação, como direito, o ministro público e a defensoria pública para poder conter os conflitos e evitar os ataques físicos muita das vezes impulsionadas por esta ruptura de ataque. Esse conflitos muitas vezes são lutas pela agência e poder da sociedade é esse assunto todo pode gerar mais conflito que o normal.`
+  if (CONFIG.nome) {
+    document.title = `${CONFIG.nome} — Portfólio de Redações | Ensino Médio`;
   }
-];
+
+  const linkEmail = $('a[href^="mailto:"]');
+  if (linkEmail) linkEmail.href = `mailto:${CONFIG.email}`;
+
+  const linkGithub = $('a[href*="github.com"]');
+  if (linkGithub) linkGithub.href = CONFIG.github;
+}
+
+/* =============================================================================
+   01. CABEÇALHO: SOMBRA AO ROLAR E MENU RESPONSIVO
+   ============================================================================= */
+function iniciarCabecalho() {
+  const header = $('#topo');
+  const toggle = $('#nav-toggle');
+  const nav = $('#menu-principal');
+  if (!header || !toggle || !nav) return;
+
+  /* Sombra suave quando a página não está no topo */
+  const aoRolar = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+  aoRolar();
+  window.addEventListener('scroll', aoRolar, { passive: true });
+
+  const fecharMenu = () => {
+    nav.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  };
+
+  toggle.addEventListener('click', () => {
+    const aberto = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(aberto));
+  });
+
+  /* Fecha ao clicar em um link do menu */
+  $$('a', nav).forEach((link) => link.addEventListener('click', fecharMenu));
+
+  /* Fecha com Esc */
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && nav.classList.contains('is-open')) {
+      fecharMenu();
+      toggle.focus();
+    }
+  });
+
+  /* Fecha ao clicar fora do menu */
+  document.addEventListener('click', (event) => {
+    if (!nav.classList.contains('is-open')) return;
+    if (nav.contains(event.target) || toggle.contains(event.target)) return;
+    fecharMenu();
+  });
+
+  /* Se a tela crescer, o menu mobile deixa de existir */
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) fecharMenu();
+  });
+}
+
+/* =============================================================================
+   02. NAVEGAÇÃO: DESTAQUE DA SEÇÃO VISÍVEL
+   ============================================================================= */
+function iniciarScrollSpy() {
+  const links = $$('.site-nav a[href^="#"]');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+
+  const porId = new Map();
+  links.forEach((link) => {
+    const secao = document.getElementById(link.getAttribute('href').slice(1));
+    if (secao) porId.set(secao, link);
+  });
+
+  const observer = new IntersectionObserver(
+    (entradas) => {
+      entradas.forEach((entrada) => {
+        if (!entrada.isIntersecting) return;
+        links.forEach((l) => l.classList.remove('is-active'));
+        const link = porId.get(entrada.target);
+        if (link) link.classList.add('is-active');
+      });
+    },
+    { rootMargin: '-45% 0px -50% 0px', threshold: 0 },
+  );
+
+  porId.forEach((_, secao) => observer.observe(secao));
+}
+
+/* =============================================================================
+   03. ANIMAÇÕES DE REVELAÇÃO AO ROLAR
+   ============================================================================= */
+function iniciarRevelacoes() {
+  const elementos = $$('[data-reveal]');
+  if (!elementos.length) return;
+
+  /* Escalonamento suave entre cards vizinhos */
+  elementos.forEach((el) => {
+    const irmaos = Array.from(el.parentElement.children).filter((c) => c.hasAttribute('data-reveal'));
+    const indice = irmaos.indexOf(el);
+    if (indice > 0) el.style.setProperty('--reveal-delay', `${Math.min(indice, 6) * 60}ms`);
+  });
+
+  if (!('IntersectionObserver' in window)) {
+    elementos.forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entradas, obs) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('is-visible');
+          obs.unobserve(entrada.target);
+        }
+      });
+    },
+    { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+  );
+
+  elementos.forEach((el) => observer.observe(el));
+}
+
+/* =============================================================================
+   04. LINHA DO TEMPO: BARRA DE PROGRESSO
+   ============================================================================= */
+function iniciarProgressoLinhaDoTempo() {
+  const timeline = $('.timeline');
+  if (!timeline) return;
+
+  const barra = document.createElement('span');
+  barra.className = 'timeline-progress';
+  barra.setAttribute('aria-hidden', 'true');
+  timeline.appendChild(barra);
+
+  const atualizar = () => {
+    const rect = timeline.getBoundingClientRect();
+    const alturaVisivel = window.innerHeight;
+    /* Quanto da linha já passou pelo meio da tela */
+    const progresso = Math.min(Math.max(alturaVisivel * 0.55 - rect.top, 0), rect.height);
+    barra.style.height = `${progresso}px`;
+  };
+
+  atualizar();
+  window.addEventListener('scroll', atualizar, { passive: true });
+  window.addEventListener('resize', atualizar);
+}
+
+/* =============================================================================
+   04.1 LINHA DO TEMPO: TEXTOS EDITÁVEIS
+   -----------------------------------------------------------------------------
+   Os relatos de cada fase podem ser escritos direto no site. O rascunho fica
+   salvo no localStorage do navegador (nada é enviado para nenhum servidor) e
+   pode ser restaurado para os textos de exemplo com um clique.
+   ============================================================================= */
+const CHAVE_LINHA_DO_TEMPO = 'portfolio-gabriel:linha-do-tempo';
+
+/** Lê o rascunho salvo; devolve null quando não existe ou está corrompido. */
+function lerRascunho() {
+  try {
+    const bruto = localStorage.getItem(CHAVE_LINHA_DO_TEMPO);
+    if (!bruto) return null;
+    const dados = JSON.parse(bruto);
+    return dados && typeof dados === 'object' ? dados : null;
+  } catch (erro) {
+    return null; /* navegador sem localStorage ou JSON inválido */
+  }
+}
+
+/** Tenta salvar; devolve false quando o navegador bloqueia o armazenamento. */
+function gravarRascunho(dados) {
+  try {
+    localStorage.setItem(CHAVE_LINHA_DO_TEMPO, JSON.stringify(dados));
+    return true;
+  } catch (erro) {
+    return false;
+  }
+}
+
+function apagarRascunho() {
+  try {
+    localStorage.removeItem(CHAVE_LINHA_DO_TEMPO);
+  } catch (erro) {
+    /* sem localStorage: nada a apagar */
+  }
+}
+
+function iniciarEdicaoTimeline() {
+  const secao = $('#trajetoria');
+  const campos = $$('[data-edit]', secao || document);
+  const botao = $('#tl-toggle');
+  const rotulo = $('#tl-toggle-label');
+  const restaurar = $('#tl-reset');
+  const status = $('#tl-status');
+  const caixa = $('.tl-tools');
+  if (!secao || !campos.length || !botao) return;
+
+  /* Guarda o HTML original de cada campo — serve para "Restaurar exemplos". */
+  const originais = new Map(campos.map((campo) => [campo.dataset.edit, campo.innerHTML]));
+  let editando = false;
+  let avisoTimer = null;
+
+  const avisar = (mensagem) => {
+    if (!status) return;
+    status.textContent = mensagem;
+    clearTimeout(avisoTimer);
+    avisoTimer = setTimeout(() => {
+      status.textContent = '';
+    }, 4000);
+  };
+
+  const coletar = () => {
+    const dados = {};
+    campos.forEach((campo) => {
+      dados[campo.dataset.edit] = campo.innerHTML;
+    });
+    return dados;
+  };
+
+  const salvar = () => {
+    const ok = gravarRascunho(coletar());
+    if (ok) {
+      if (caixa) caixa.dataset.pendente = 'nao';
+      avisar('Rascunho salvo neste navegador.');
+    } else {
+      avisar('O navegador bloqueou o armazenamento: o texto pode ser editado, mas não será salvo.');
+    }
+    return ok;
+  };
+
+  const salvarComAtraso = debounce(salvar, 600);
+
+  /* 1) Aplica o rascunho salvo (se existir) ao abrir a página. */
+  const rascunho = lerRascunho();
+  if (rascunho) {
+    let aplicados = 0;
+    campos.forEach((campo) => {
+      const valor = rascunho[campo.dataset.edit];
+      if (typeof valor === 'string' && valor.trim()) {
+        campo.innerHTML = valor;
+        aplicados += 1;
+      }
+    });
+    if (aplicados && restaurar) {
+      restaurar.hidden = false;
+      if (caixa) caixa.dataset.pendente = 'sim';
+    }
+  }
+
+  /* 2) Liga e desliga o modo de edição. */
+  const definirModo = (ligado) => {
+    editando = ligado;
+    secao.classList.toggle('is-editing', ligado);
+    botao.setAttribute('aria-pressed', String(ligado));
+    if (rotulo) rotulo.textContent = ligado ? 'Concluir edição' : 'Editar textos';
+
+    campos.forEach((campo) => {
+      campo.contentEditable = ligado ? 'true' : 'false';
+      if (ligado) campo.setAttribute('spellcheck', 'true');
+    });
+
+    if (ligado) {
+      avisar('Modo de edição ativado: clique em um texto e escreva. As alterações são salvas automaticamente.');
+      const primeiro = campos[0];
+      if (primeiro) {
+        primeiro.focus({ preventScroll: true });
+        /* Coloca o cursor no fim do texto, sem selecionar tudo */
+        const selecao = window.getSelection();
+        if (selecao) {
+          const intervalo = document.createRange();
+          intervalo.selectNodeContents(primeiro);
+          intervalo.collapse(false);
+          selecao.removeAllRanges();
+          selecao.addRange(intervalo);
+        }
+      }
+    } else {
+      const ok = salvar();
+      avisar(ok ? 'Edição concluída — rascunho salvo neste navegador.' : 'Edição concluída.');
+    }
+  };
+
+  botao.addEventListener('click', () => definirModo(!editando));
+
+  /* 3) Salva enquanto digita (com atraso) e ao sair do campo. */
+  campos.forEach((campo) => {
+    campo.addEventListener('input', () => {
+      if (!editando) return;
+      if (caixa) caixa.dataset.pendente = 'sim';
+      salvarComAtraso();
+    });
+    campo.addEventListener('blur', () => {
+      if (editando) salvar();
+    });
+    /* Colar sempre como texto puro evita trazer estilos de fora */
+    campo.addEventListener('paste', (event) => {
+      if (!editando) return;
+      event.preventDefault();
+      const texto = (event.clipboardData || window.clipboardData).getData('text/plain');
+      try {
+        document.execCommand('insertText', false, texto);
+      } catch (erro) {
+        campo.textContent += texto;
+      }
+    });
+  });
+
+  /* 4) Restaura os textos de exemplo do HTML. */
+  if (restaurar) {
+    restaurar.addEventListener('click', () => {
+      const confirmar = window.confirm(
+        'Restaurar os textos de exemplo? O rascunho salvo neste navegador será apagado.',
+      );
+      if (!confirmar) return;
+
+      campos.forEach((campo) => {
+        const original = originais.get(campo.dataset.edit);
+        if (typeof original === 'string') campo.innerHTML = original;
+      });
+      apagarRascunho();
+      restaurar.hidden = true;
+      if (caixa) caixa.dataset.pendente = 'nao';
+      if (editando) definirModo(false);
+      avisar('Textos de exemplo restaurados.');
+    });
+  }
+
+  /* 5) Avisa antes de sair com alterações ainda não gravadas. */
+  window.addEventListener('beforeunload', (event) => {
+    if (caixa && caixa.dataset.pendente === 'sim' && editando) {
+      event.preventDefault();
+      event.returnValue = '';
+    }
+  });
+}
+
+/* =============================================================================
+   05. REDAÇÕES: BUSCA E FILTRO POR TEMA
+   ============================================================================= */
+const estado = {
+  termo: '',
+  categoria: 'todas',
+  visiveis: [],
+};
+
+function iniciarBuscaEFiltros() {
+  const grid = $('#lista-redacoes');
+  const input = $('#busca-redacoes');
+  const limpar = $('#limpar-busca');
+  const info = $('#resultado-busca');
+  const vazio = $('#sem-resultados');
+  const resetar = $('#reset-filtros');
+  const chips = $$('.chip');
+  if (!grid || !input) return;
+
+  const cards = $$('.essay-card', grid);
+  const total = cards.length;
+
+  /* Pré-carrega o texto integral de cada redação (para a busca funcionar
+     também em palavras que aparecem no meio do texto). */
+  cards.forEach((card) => {
+    const template = document.getElementById(`redacao-${card.dataset.num}`);
+    card.dataset.busca = normalizar(
+      [
+        $('.card-title', card)?.textContent ?? '',
+        $('.card-cat', card)?.textContent ?? '',
+        $('.card-preview', card)?.textContent ?? '',
+        template ? template.content.textContent : '',
+      ].join(' '),
+    );
+  });
+
+  const aplicar = () => {
+    const termo = normalizar(estado.termo);
+    let mostradas = 0;
+
+    cards.forEach((card) => {
+      const combinaCategoria = estado.categoria === 'todas' || card.dataset.cat === estado.categoria;
+      const combinaTermo = !termo || card.dataset.busca.includes(termo);
+      const visivel = combinaCategoria && combinaTermo;
+      card.hidden = !visivel;
+      if (visivel) mostradas += 1;
+    });
+
+    /* Lista de redações visíveis, na ordem atual (usada pela modal) */
+    estado.visiveis = cards.filter((card) => !card.hidden).map((card) => card.dataset.num);
+
+    /* Contador acessível */
+    if (info) {
+      info.textContent =
+        mostradas === total
+          ? `${total} redações disponíveis`
+          : `${mostradas} de ${total} redações encontradas`;
+    }
+
+    /* Estado vazio */
+    if (vazio) vazio.hidden = mostradas !== 0;
+    if (limpar) limpar.hidden = !estado.termo;
+
+    /* Chips */
+    chips.forEach((chip) => {
+      const ativo = chip.dataset.filter === estado.categoria;
+      chip.classList.toggle('is-active', ativo);
+      chip.setAttribute('aria-pressed', String(ativo));
+    });
+  };
+
+  /* Busca com debounce */
+  const aoDigitar = debounce(() => {
+    estado.termo = input.value;
+    aplicar();
+  }, 140);
+
+  input.addEventListener('input', aoDigitar);
+
+  /* Botão de limpar do campo */
+  if (limpar) {
+    limpar.addEventListener('click', () => {
+      input.value = '';
+      estado.termo = '';
+      aplicar();
+      input.focus();
+    });
+  }
+
+  /* Filtros por tema */
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      estado.categoria = chip.dataset.filter;
+      aplicar();
+    });
+  });
+
+  /* Limpar tudo pelo estado vazio */
+  if (resetar) {
+    resetar.addEventListener('click', () => {
+      estado.categoria = 'todas';
+      estado.termo = '';
+      input.value = '';
+      aplicar();
+      input.focus();
+    });
+  }
+
+  /* Atalho "/" para focar a busca */
+  document.addEventListener('keydown', (event) => {
+    const modalAberta = !document.getElementById('modal-redacao')?.hidden;
+    if (event.key === '/' && !modalAberta && document.activeElement !== input) {
+      const digitando = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
+      if (!digitando) {
+        event.preventDefault();
+        input.focus();
+      }
+    }
+  });
+
+  aplicar();
+}
+
+/* =============================================================================
+   06. REDAÇÕES: JANELA MODAL DE LEITURA
+   ============================================================================= */
+const modal = {
+  el: null,
+  conteudo: null,
+  contador: null,
+  btnPrev: null,
+  btnNext: null,
+  origem: null,
+};
+
+function iniciarModalLeitura() {
+  const el = $('#modal-redacao');
+  const conteudo = $('#modal-conteudo');
+  if (!el || !conteudo) return;
+
+  modal.el = el;
+  modal.conteudo = conteudo;
+  modal.contador = $('#modal-contador');
+  modal.btnPrev = $('[data-nav="prev"]', el);
+  modal.btnNext = $('[data-nav="next"]', el);
+
+  /* Abrir ao clicar em "Ler redação" */
+  document.addEventListener('click', (event) => {
+    const gatilho = event.target.closest('[data-open]');
+    if (!gatilho) return;
+    abrirRedacao(gatilho.dataset.open, gatilho);
+  });
+
+  /* Fechar */
+  $$('[data-close]', el).forEach((btn) => {
+    btn.addEventListener('click', fecharModal);
+  });
+
+  /* Navegação anterior / próxima */
+  if (modal.btnPrev) modal.btnPrev.addEventListener('click', () => navegar(-1));
+  if (modal.btnNext) modal.btnNext.addEventListener('click', () => navegar(1));
+
+  /* Teclado */
+  document.addEventListener('keydown', (event) => {
+    if (el.hidden) return;
+
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      fecharModal();
+    } else if (event.key === 'Tab') {
+      manterFocoNoModal(event);
+    } else if (event.key === 'ArrowLeft') {
+      navegar(-1);
+    } else if (event.key === 'ArrowRight') {
+      navegar(1);
+    }
+  });
+
+  /* Link direto: site.com/#redacao-7 abre a redação 7 */
+  if (location.hash.startsWith('#redacao-')) {
+    const num = location.hash.replace('#redacao-', '');
+    if (document.getElementById(`redacao-${num}`)) {
+      setTimeout(() => abrirRedacao(num, null), 120);
+    }
+  }
+}
+
+/** Redações visíveis no momento (respeitando busca e filtro). */
+function listaVisivel() {
+  return estado.visiveis.length
+    ? estado.visiveis
+    : $$('.essay-card:not([hidden])').map((card) => card.dataset.num);
+}
+
+function abrirRedacao(num, gatilho) {
+  const template = document.getElementById(`redacao-${num}`);
+  if (!template) return;
+
+  modal.origem = gatilho || document.activeElement;
+  modal.conteudo.innerHTML = '';
+  modal.conteudo.appendChild(template.content.cloneNode(true));
+  modal.conteudo.scrollTop = 0;
+
+  /* O título recebe o id usado por aria-labelledby da janela modal */
+  const titulo = $('.reader-title', modal.conteudo);
+  if (titulo) titulo.id = 'modal-titulo';
+
+  modal.el.hidden = false;
+  document.body.classList.add('modal-aberta');
+
+  atualizarNavegacao(num);
+
+  /* Foco vai para o botão de fechar (primeira ação esperada) */
+  const fechar = $('.modal-close', modal.el);
+  if (fechar) fechar.focus({ preventScroll: true });
+
+  /* Guarda o número da redação aberta */
+  modal.el.dataset.atual = num;
+
+  /* Atualiza a URL sem recarregar nem pular a página
+     (o try/catch evita erro quando o site é aberto direto do arquivo) */
+  try {
+    history.replaceState(null, '', `#redacao-${num}`);
+  } catch (erro) {
+    /* Protocolo file:// ou navegador restrito: segue sem alterar a URL */
+  }
+}
+
+function fecharModal() {
+  if (!modal.el || modal.el.hidden) return;
+
+  modal.el.hidden = true;
+  modal.el.dataset.atual = '';
+  modal.conteudo.innerHTML = '';
+  document.body.classList.remove('modal-aberta');
+
+  /* Remove o hash da URL */
+  try {
+    history.replaceState(null, '', location.pathname + location.search);
+  } catch (erro) {
+    /* idem acima */
+  }
+
+  /* Devolve o foco para quem abriu */
+  if (modal.origem && typeof modal.origem.focus === 'function') {
+    modal.origem.focus({ preventScroll: true });
+  }
+}
+
+/** Atualiza contador e estado dos botões de navegação. */
+function atualizarNavegacao(num) {
+  const lista = listaVisivel();
+  const indice = lista.indexOf(String(num));
+
+  if (modal.contador) {
+    modal.contador.textContent = `${indice + 1} de ${lista.length}`;
+  }
+  if (modal.btnPrev) modal.btnPrev.disabled = indice <= 0;
+  if (modal.btnNext) modal.btnNext.disabled = indice === -1 || indice >= lista.length - 1;
+}
+
+/** Vai para a redação anterior (-1) ou seguinte (+1). */
+function navegar(direcao) {
+  if (!modal.el || modal.el.hidden) return;
+
+  const atual = modal.el.dataset.atual;
+  const lista = listaVisivel();
+  const indice = lista.indexOf(String(atual));
+  const proximo = lista[indice + direcao];
+  if (!proximo) return;
+
+  abrirRedacao(proximo, modal.origem);
+}
+
+/** Mantém o foco do teclado dentro da janela modal (acessibilidade). */
+function manterFocoNoModal(event) {
+  const focaveis = $$(
+    'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    modal.el,
+  ).filter((el) => el.offsetParent !== null || el === document.activeElement);
+
+  if (!focaveis.length) return;
+
+  const primeiro = focaveis[0];
+  const ultimo = focaveis[focaveis.length - 1];
+
+  if (event.shiftKey && document.activeElement === primeiro) {
+    event.preventDefault();
+    ultimo.focus();
+  } else if (!event.shiftKey && document.activeElement === ultimo) {
+    event.preventDefault();
+    primeiro.focus();
+  }
+}
+
+/* =============================================================================
+   07. BOTÃO VOLTAR AO TOPO
+   ============================================================================= */
+function iniciarBotaoTopo() {
+  const botao = $('#to-top');
+  if (!botao) return;
+
+  const atualizar = () => {
+    const visivel = window.scrollY > 500;
+    if (visivel && botao.hidden) botao.hidden = false;
+    botao.classList.toggle('is-visible', visivel);
+    if (!visivel) {
+      /* Esconde de novo depois da transição, para não capturar cliques */
+      setTimeout(() => {
+        if (window.scrollY <= 500) botao.hidden = true;
+      }, 320);
+    }
+  };
+
+  atualizar();
+  window.addEventListener('scroll', atualizar, { passive: true });
+
+  botao.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+/* =============================================================================
+   INICIALIZAÇÃO
+   ============================================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+  aplicarConfig();
+  iniciarCabecalho();
+  iniciarScrollSpy();
+  iniciarRevelacoes();
+  iniciarProgressoLinhaDoTempo();
+  iniciarEdicaoTimeline();
+  iniciarBuscaEFiltros();
+  iniciarModalLeitura();
+  iniciarBotaoTopo();
+});
