@@ -1,1 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <meta name="description" content="Portfólio de redações de Lucas Marcelo de Freitas">
+
+  <title>Lucas Marcelo de Freitas | Portfólio</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <a class="brand" href="#inicio">LMF<span>.</span></a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+      ☰
+    </button>
+
+    <nav class="nav" id="nav">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#colecao">Redações</a>
+      <a href="#final">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="inicio">
+
+      <div class="hero-content">
+        <p class="eyebrow">PORTFÓLIO DE PRODUÇÃO TEXTUAL</p>
+
+        <h1>
+          Ideias, temas<br>
+          e <span>reflexões.</span>
+        </h1>
+
+        <p class="hero-text">
+          Uma coleção de textos sobre sociedade, tecnologia,
+          meio ambiente e os desafios do nosso tempo.
+        </p>
+
+        <a class="primary-btn" href="#colecao">
+          Explorar redações <span>↘</span>
+        </a>
+      </div>
+
+      <div class="hero-art">
+        <div class="art-circle circle-one"></div>
+        <div class="art-circle circle-two"></div>
+        <div class="art-line"></div>
+
+        <div class="art-label">
+          ESCRITA<br>
+          • IDEIAS<br>
+          • REFLEXÃO
+        </div>
+      </div>
+
+    </section>
+
+    <section class="about section" id="sobre">
+
+      <p class="eyebrow">01 / APRESENTAÇÃO</p>
+
+      <h2>
+        Um pouco sobre<br>
+        <span>este portfólio.</span>
+      </h2>
+
+      <p class="about-copy">
+        Este espaço reúne produções textuais desenvolvidas ao
+        longo da trajetória escolar. Cada redação aborda um
+        tema diferente e representa uma oportunidade de
+        pesquisar, refletir e expressar ideias sobre o mundo.
+      </p>
+
+      <p class="student-name">
+        Lucas Marcelo de Freitas
+      </p>
+
+    </section>
+
+    <section class="collection section" id="colecao">
+
+      <div class="section-heading">
+
+        <div>
+          <p class="eyebrow">02 / COLEÇÃO</p>
+          <h2>Redações</h2>
+        </div>
+
+        <p class="collection-note">
+          Explore os temas e abra cada texto para ler na íntegra.
+        </p>
+
+      </div>
+
+      <div class="search-wrap">
+        <span>⌕</span>
+
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Buscar por título ou assunto..."
+          aria-label="Buscar redações"
+        >
+      </div>
+
+      <div class="essay-grid" id="essayGrid"></div>
+
+      <p class="no-results" id="noResults" hidden>
+        Nenhuma redação encontrada. Tente outra palavra.
+      </p>
+
+    </section>
+
+    <section class="closing" id="final">
+
+      <p class="eyebrow">03 / ENCERRAMENTO</p>
+
+      <h2>
+        Escrever é uma forma<br>
+        de <span>compreender.</span>
+      </h2>
+
+      <p>
+        Que cada tema seja o começo de uma nova pergunta,
+        ideia ou descoberta.
+      </p>
+
+      <a href="#inicio" class="back-top">
+        Voltar ao início ↑
+      </a>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <span>Lucas Marcelo de Freitas</span>
+    <span>Portfólio de redações · 2026</span>
+  </footer>
+
+  <div class="modal" id="essayModal" aria-hidden="true">
+
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+
+    <article
+      class="modal-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+
+      <button class="modal-close" id="modalClose" aria-label="Fechar">
+        ×
+      </button>
+
+      <p class="eyebrow" id="modalNumber"></p>
+
+      <h2 id="modalTitle"></h2>
+
+      <div class="modal-body" id="modalBody"></div>
+
+    </article>
+
+  </div>
+
+  <script src="js/script.js"></script>
+
+</body>
+</html>
